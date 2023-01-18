@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, styled, Typography, Zoom } from '@mui/material'
+import { Card, CardContent, CardMedia, keyframes, styled, Typography, Zoom } from '@mui/material'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { GlassEffect, RatingWithTooltip } from '../..'
@@ -14,6 +14,14 @@ interface ICardWithGlassEffect {
 
 export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
   const { releaseDate, imagePath, title, voteAverage, link } = props
+  const move = keyframes`
+    from { 
+      opacity: 0;
+    }
+    to { 
+      opacity: 1;
+    }
+  `
   const Title = styled(Typography)(({ theme }) => ({
     display: '-webkit-box',
     WebkitLineClamp: '2',
@@ -33,17 +41,24 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
     fontWeight: theme.typography.fontWeightRegular
   }))
 
+  const CardImage = styled(CardMedia)(({ theme }) => ({
+    height: '300px',
+    position: 'relative',
+    overflow: 'hidden',
+    animation: `${move} 3s normal`
+  }))
+
   return (
     <Zoom in timeout={1000}>
       <Card sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
         <Link to={link} style={{ textDecoration: 'none' }}>
-          <CardMedia
+          <CardImage
             sx={{ height: '300px', position: 'relative', overflow: 'hidden' }}
             image={imagePath !== null ? `https://image.tmdb.org/t/p/w500/${imagePath}` : BlackImage}
             title={title}
           >
             <GlassEffect />
-          </CardMedia>
+          </CardImage>
           <CardContent
             sx={{
               display: 'flex',
