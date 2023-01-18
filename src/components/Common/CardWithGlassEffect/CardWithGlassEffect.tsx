@@ -49,7 +49,7 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
   }))
 
   return (
-    <Zoom in timeout={1000}>
+    // <Zoom in timeout={1000}>
       <Card sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
         <Link to={link} style={{ textDecoration: 'none' }}>
           <CardImage
@@ -78,6 +78,6 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
           </CardContent>
         </Link>
       </Card>
-    </Zoom>
+    // </Zoom>
   )
 }

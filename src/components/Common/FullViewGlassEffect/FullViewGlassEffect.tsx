@@ -7,7 +7,7 @@ export const FullViewGlassEffect: FC = () => {
     transform: translate(-400px, 0px); 
   }
   to { 
-    transform: translate(400px, 0px) ; 
+    transform: translate(600px, 0px) ; 
     }
 `
   const GlassWrapper = styled(Box)(({ theme }) => ({
@@ -16,8 +16,6 @@ export const FullViewGlassEffect: FC = () => {
     left: 0,
     bottom: 0,
     right: 0,
-    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.5)',
-    border: '1px solid rgba(182, 182, 182, 0.5)',
     overflow: 'hidden',
     borderRadius: '4px'
   }))
