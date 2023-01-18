@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import { GlassEffect, RatingWithTooltip } from '../..'
 
 interface ICardWithGlassEffect {
-  releaseDate: string
+  releaseDate?: string
   posterPath: string | null
   title: string
-  voteAverage: number
+  voteAverage?: number | undefined
   link: string
 }
 
@@ -56,7 +56,7 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
           <Date variant='subtitle1' gutterBottom>
             {releaseDate}
           </Date>
-          <RatingWithTooltip voteAverage={voteAverage} />
+          {voteAverage !== undefined && <RatingWithTooltip voteAverage={voteAverage} />}
         </CardContent>
       </Link>
     </Card>
