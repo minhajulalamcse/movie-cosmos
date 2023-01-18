@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { CardWithGlassEffect, HorizontalSlider } from '..'
+import { CardWithGlassEffect, HorizontalSlider, LoadingCardList } from '..'
 import { RootState } from '../../app/store'
 import { ITVShowDetailsGetResponse } from '../../interfaces/tv/ITVShowDetailsGetResponse'
 import { useGetTrendingTVShowsQuery } from '../../services/tmdb'
@@ -13,7 +13,11 @@ export const TrendingTVShows: FC = () => {
   const { trendingTVTimeWindow: timeWindow } = useSelector((state: RootState) => state.trending)
   const { data, isError, isLoading } = useGetTrendingTVShowsQuery({ mediaType, timeWindow })
 
-  if (data === null || data?.results.length === 0 || isError || isLoading) {
+  if (isLoading) {
+    return <LoadingCardList title='Trending TV Shows' />
+  }
+
+  if (data === null || data?.results.length === 0 || isError) {
     return null
   }
   return (

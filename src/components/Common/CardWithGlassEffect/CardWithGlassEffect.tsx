@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, styled, Typography } from '@mui/material'
+import { Card, CardContent, CardMedia, styled, Typography, Zoom } from '@mui/material'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { GlassEffect, RatingWithTooltip } from '../..'
@@ -32,34 +32,37 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
     color: theme.palette.text.secondary,
     fontWeight: theme.typography.fontWeightRegular
   }))
+
   return (
-    <Card sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
-      <Link to={link} style={{ textDecoration: 'none' }}>
-        <CardMedia
-          sx={{ height: '300px', position: 'relative', overflow: 'hidden' }}
-          image={imagePath !== null ? `https://image.tmdb.org/t/p/w500/${imagePath}` : BlackImage}
-          title={title}
-        >
-          <GlassEffect />
-        </CardMedia>
-        <CardContent
-          sx={{
-            display: 'flex',
-            flexDirection: 'column ',
-            justifyContent: 'flex-start',
-            alignItems: 'flex-start !important',
-            padding: '16px !important'
-          }}
-        >
-          <Title variant='h6' gutterBottom>
-            {title}
-          </Title>
-          <Date variant='subtitle1' gutterBottom>
-            {releaseDate}
-          </Date>
-          {voteAverage !== undefined && <RatingWithTooltip voteAverage={voteAverage} />}
-        </CardContent>
-      </Link>
-    </Card>
+    <Zoom in timeout={1000}>
+      <Card sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
+        <Link to={link} style={{ textDecoration: 'none' }}>
+          <CardMedia
+            sx={{ height: '300px', position: 'relative', overflow: 'hidden' }}
+            image={imagePath !== null ? `https://image.tmdb.org/t/p/w500/${imagePath}` : BlackImage}
+            title={title}
+          >
+            <GlassEffect />
+          </CardMedia>
+          <CardContent
+            sx={{
+              display: 'flex',
+              flexDirection: 'column ',
+              justifyContent: 'flex-start',
+              alignItems: 'flex-start !important',
+              padding: '16px !important'
+            }}
+          >
+            <Title variant='h6' gutterBottom>
+              {title}
+            </Title>
+            <Date variant='subtitle1' gutterBottom>
+              {releaseDate}
+            </Date>
+            {voteAverage !== undefined && <RatingWithTooltip voteAverage={voteAverage} />}
+          </CardContent>
+        </Link>
+      </Card>
+    </Zoom>
   )
 }

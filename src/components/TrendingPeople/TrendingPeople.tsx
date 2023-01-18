@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { CardWithGlassEffect, HorizontalSlider } from '..'
+import { CardWithGlassEffect, HorizontalSlider, LoadingCardList } from '..'
 import { RootState } from '../../app/store'
 import { IPersonDetailsGetResponse } from '../../interfaces/people/IPersonDetailsGetResponse'
 import { useGetTrendingPeopleQuery } from '../../services/tmdb'
@@ -13,7 +13,11 @@ export const TrendingPeople: FC = () => {
   const { trendingPersonTimeWindow: timeWindow } = useSelector((state: RootState) => state.trending)
   const { data, isError, isLoading } = useGetTrendingPeopleQuery({ mediaType, timeWindow })
 
-  if (data === null || data?.results.length === 0 || isError || isLoading) {
+  if (isLoading) {
+    return <LoadingCardList title='Trending People' />
+  }
+
+  if (data === null || data?.results.length === 0 || isError) {
     return null
   }
 
