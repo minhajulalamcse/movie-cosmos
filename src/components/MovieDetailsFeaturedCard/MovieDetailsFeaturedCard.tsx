@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { Card, CardMedia } from '@mui/material'
 import { FC } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { FeaturedMovieGlassEffect, MovieInformation } from '..'
 import { BlackImage } from '../../assets'
 import { useGetMovieDetailsQuery } from '../../services/tmdb'
 import { Error } from '../Common/Error/Error'
@@ -61,7 +62,8 @@ export const MovieDetailsFeaturedCard: FC = () => {
         title={data.title}
       >
         <BackgroundOverlay />
-        {/* <MovieInformation movie={movie} /> */}
+        <FeaturedMovieGlassEffect />
+        <MovieInformation movie={data} />
       </CardMedia>
     </CardWrapper>
   )
