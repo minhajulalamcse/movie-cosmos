@@ -1,6 +1,7 @@
 export { AppbarWithDrawer } from './AppbarWithDrawer/AppbarWithDrawer'
 export { CardWithGlassEffect } from './Common/CardWithGlassEffect/CardWithGlassEffect'
 export { Container } from './Common/Container/Container'
+export { FullViewGlassEffect } from './Common/FullViewGlassEffect/FullViewGlassEffect'
 export { GlassEffect } from './Common/GlassEffect/GlassEffect'
 export { GridContainer } from './Common/GridContainer/GridContainer'
 export { GridItem } from './Common/GridItem/GridItem'
