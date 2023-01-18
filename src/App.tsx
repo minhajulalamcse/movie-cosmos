@@ -1,6 +1,6 @@
 import { Box, CssBaseline, Toolbar } from '@mui/material'
 import React, { FC } from 'react'
-import { AppbarWithDrawer, CommonContainer, TrendingMovie } from './components'
+import { AppbarWithDrawer, Container, TrendingMovie } from './components'
 
 const App: FC = () => {
   return (
@@ -9,9 +9,9 @@ const App: FC = () => {
       <AppbarWithDrawer />
       <Box component='main'>
         <Toolbar />
-        <CommonContainer>
+        <Container>
           <TrendingMovie />
-        </CommonContainer>
+        </Container>
       </Box>
     </React.Fragment>
   )

@@ -1,10 +1,10 @@
 import { Box, Grid } from '@mui/material'
 import { FC } from 'react'
 
-interface ICommonGridContainer {
+interface IGridContainer {
   children: React.ReactNode
 }
-export const CommonGridContainer: FC<ICommonGridContainer> = ({ children }) => {
+export const GridContainer: FC<IGridContainer> = ({ children }) => {
   return (
     <Box>
       <Grid container spacing={3}>
