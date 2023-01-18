@@ -32,7 +32,7 @@ export const CommonCard: FC<ICommonCard> = (props) => {
     fontWeight: theme.typography.fontWeightRegular
   }))
   return (
-    <Card sx={{ boxShadow: 2, borderRadius: 2 }}>
+    <Card sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
       <Link to={link} style={{ textDecoration: 'none' }}>
         <CardMedia
           sx={{ height: '300px', position: 'relative', overflow: 'hidden' }}

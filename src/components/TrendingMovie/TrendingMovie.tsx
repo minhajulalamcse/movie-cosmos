@@ -1,14 +1,11 @@
-import { Typography, useTheme } from '@mui/material'
-import { Box } from '@mui/system'
+import { Box, Typography, useTheme } from '@mui/material'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
+import { CommonCard, HorizontalSlider } from '..'
 import { RootState } from '../../app/store'
 import { ITrendingResultObject } from '../../interfaces/trending/ITrendingResultObject'
 import { MediaType } from '../../interfaces/trending/MediaType'
 import { useGetTrendingQuery } from '../../services/tmdb'
-import { CommonCard } from '../CommonCard/CommonCard'
-import { CommonGridContainer } from '../CommonGridContainer/CommonGridContainer'
-import { CommonGridItem } from '../CommonGridItem/CommonGridItem'
 
 export const TrendingMovie: FC = () => {
   const theme = useTheme()
@@ -17,25 +14,24 @@ export const TrendingMovie: FC = () => {
   const { data } = useGetTrendingQuery({ mediaType, timeWindow })
 
   return (
-    <Box>
-      <Typography variant='h5' fontWeight={theme.typography.fontWeightMedium} mb={2}>
+    <Box display='flex' flexDirection='column' alignItems='flex-start' justifyContent='flex-start'>
+      <Typography variant='h5' fontWeight={theme.typography.fontWeightMedium} mb={2} ml={2.5}>
         Trending
       </Typography>
-      <CommonGridContainer>
+      <HorizontalSlider>
         {data?.results.map((movie: ITrendingResultObject, index: number) => {
           return (
-            <CommonGridItem key={index}>
-              <CommonCard
-                releaseDate={movie?.release_date}
-                title={movie?.title}
-                posterPath={movie?.poster_path}
-                voteAverage={movie?.vote_average}
-                link={`/movie${movie?.id}`}
-              />
-            </CommonGridItem>
+            <CommonCard
+              key={index}
+              releaseDate={movie?.release_date}
+              title={movie?.title}
+              posterPath={movie?.poster_path}
+              voteAverage={movie?.vote_average}
+              link={`/movie/${movie?.id}`}
+            />
           )
         })}
-      </CommonGridContainer>
+      </HorizontalSlider>
     </Box>
   )
 }
