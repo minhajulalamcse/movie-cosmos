@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ITrendingGetResponse } from '../interfaces/trending/ITrendingGetResponse'
+import { ITrendingMoviesGetResponse } from '../interfaces/trending/ITrendingMoviesGetResponse'
 import { ITrendingParams } from '../interfaces/trending/ITrendingParams'
+import { ITrendingPeopleGetResponse } from '../interfaces/trending/ITrendingPeopleGetResponse'
+import { ITrendingTVShowsGetResponse } from '../interfaces/trending/ITrendingTVShowsGetResponse'
 
 const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY as string
 
@@ -10,7 +12,17 @@ export const tmdbApi = createApi({
     baseUrl: 'https://api.themoviedb.org/3'
   }),
   endpoints: (builder) => ({
-    getTrending: builder.query<ITrendingGetResponse, ITrendingParams>({
+    getTrendingMovies: builder.query<ITrendingMoviesGetResponse, ITrendingParams>({
+      query: ({ mediaType, timeWindow }) => {
+        return `trending/${mediaType}/${timeWindow}?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getTrendingTVShows: builder.query<ITrendingTVShowsGetResponse, ITrendingParams>({
+      query: ({ mediaType, timeWindow }) => {
+        return `trending/${mediaType}/${timeWindow}?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getTrendingPeople: builder.query<ITrendingPeopleGetResponse, ITrendingParams>({
       query: ({ mediaType, timeWindow }) => {
         return `trending/${mediaType}/${timeWindow}?api_key=${TMDB_API_KEY}`
       }
@@ -18,4 +30,4 @@ export const tmdbApi = createApi({
   })
 })
 
-export const { useGetTrendingQuery } = tmdbApi
+export const { useGetTrendingMoviesQuery, useGetTrendingTVShowsQuery, useGetTrendingPeopleQuery } = tmdbApi

@@ -3,15 +3,15 @@ import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { CardWithGlassEffect, HorizontalSlider } from '..'
 import { RootState } from '../../app/store'
-import { ITrendingResultObject } from '../../interfaces/trending/ITrendingResultObject'
-import { MediaType } from '../../interfaces/trending/MediaType'
-import { useGetTrendingQuery } from '../../services/tmdb'
+import { ITVShowDetailsGetResponse } from '../../interfaces/tv/ITVShowDetailsGetResponse'
+import { useGetTrendingTVShowsQuery } from '../../services/tmdb'
+import { MediaType } from '../../types/MediaType'
 
 export const TrendingTVShows: FC = () => {
   const theme = useTheme()
   const mediaType = MediaType.tv
   const { trendingTVTimeWindow: timeWindow } = useSelector((state: RootState) => state.trending)
-  const { data, isError, isLoading } = useGetTrendingQuery({ mediaType, timeWindow })
+  const { data, isError, isLoading } = useGetTrendingTVShowsQuery({ mediaType, timeWindow })
 
   if (data === null || data?.results.length === 0 || isError || isLoading) {
     return null
@@ -22,12 +22,12 @@ export const TrendingTVShows: FC = () => {
         Trending TV Shows
       </Typography>
       <HorizontalSlider>
-        {data?.results.map((item: ITrendingResultObject, index: number) => {
+        {data?.results.map((item: ITVShowDetailsGetResponse, index: number) => {
           return (
             <CardWithGlassEffect
               key={index}
-              releaseDate={item?.release_date}
-              title={item?.title}
+              releaseDate={item?.first_air_date}
+              title={item?.name}
               posterPath={item?.poster_path}
               voteAverage={item?.vote_average}
               link={`/movie/${item?.id}`}

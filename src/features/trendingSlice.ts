@@ -1,6 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
-import { TimeWindow } from '../interfaces/trending/TimeWindow'
+import { TimeWindow } from '../types/TimeWindow'
 
 export interface ITrendingSlice {
   trendingMovieTimeWindow: TimeWindow
