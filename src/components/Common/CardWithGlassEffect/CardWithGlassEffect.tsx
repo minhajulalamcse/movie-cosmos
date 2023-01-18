@@ -1,9 +1,9 @@
 import { Card, CardContent, CardMedia, styled, Typography } from '@mui/material'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { GlassEffect, RatingWithTooltip } from '..'
+import { GlassEffect, RatingWithTooltip } from '../..'
 
-interface ICommonCard {
+interface ICardWithGlassEffect {
   releaseDate: string
   posterPath: string | null
   title: string
@@ -11,7 +11,7 @@ interface ICommonCard {
   link: string
 }
 
-export const CommonCard: FC<ICommonCard> = (props) => {
+export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
   const { releaseDate, posterPath, title, voteAverage, link } = props
   const Title = styled(Typography)(({ theme }) => ({
     display: '-webkit-box',
@@ -42,7 +42,13 @@ export const CommonCard: FC<ICommonCard> = (props) => {
           <GlassEffect />
         </CardMedia>
         <CardContent
-          sx={{ display: 'flex', flexDirection: 'column ', justifyContent: 'flex-start', alginItems: 'flex-start' }}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column ',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start !important',
+            padding: '16px !important'
+          }}
         >
           <Title variant='h6' gutterBottom>
             {title}

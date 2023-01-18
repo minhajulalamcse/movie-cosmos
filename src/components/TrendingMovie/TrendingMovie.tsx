@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { CommonCard, HorizontalSlider } from '..'
+import { CardWithGlassEffect, HorizontalSlider } from '..'
 import { RootState } from '../../app/store'
 import { ITrendingResultObject } from '../../interfaces/trending/ITrendingResultObject'
 import { MediaType } from '../../interfaces/trending/MediaType'
@@ -24,7 +24,7 @@ export const TrendingMovie: FC = () => {
       <HorizontalSlider>
         {data?.results.map((movie: ITrendingResultObject, index: number) => {
           return (
-            <CommonCard
+            <CardWithGlassEffect
               key={index}
               releaseDate={movie?.release_date}
               title={movie?.title}

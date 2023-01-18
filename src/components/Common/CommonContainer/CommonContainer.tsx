@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import { FC } from 'react'
-import { maxWidth } from '../../utils/constants'
+import { maxWidth } from '../../../utils/constants'
 
 interface ICommonContainer {
   children: React.ReactNode
