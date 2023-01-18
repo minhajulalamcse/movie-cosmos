@@ -11,12 +11,15 @@ export const TrendingMovie: FC = () => {
   const theme = useTheme()
   const mediaType = MediaType.movie
   const { trendingMovieTimeWindow: timeWindow } = useSelector((state: RootState) => state.trending)
-  const { data } = useGetTrendingQuery({ mediaType, timeWindow })
+  const { data, isError, isLoading } = useGetTrendingQuery({ mediaType, timeWindow })
 
+  if (data === null || data?.results.length === 0 || isError || isLoading) {
+    return null
+  }
   return (
     <Box display='flex' flexDirection='column' alignItems='flex-start' justifyContent='flex-start'>
       <Typography variant='h5' fontWeight={theme.typography.fontWeightMedium} mb={2} ml={2.5}>
-        Trending
+        Trending Movies
       </Typography>
       <HorizontalSlider>
         {data?.results.map((movie: ITrendingResultObject, index: number) => {
