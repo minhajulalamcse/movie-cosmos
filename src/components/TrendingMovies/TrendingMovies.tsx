@@ -7,7 +7,7 @@ import { ITrendingResultObject } from '../../interfaces/trending/ITrendingResult
 import { MediaType } from '../../interfaces/trending/MediaType'
 import { useGetTrendingQuery } from '../../services/tmdb'
 
-export const TrendingMovie: FC = () => {
+export const TrendingMovies: FC = () => {
   const theme = useTheme()
   const mediaType = MediaType.movie
   const { trendingMovieTimeWindow: timeWindow } = useSelector((state: RootState) => state.trending)
@@ -22,15 +22,15 @@ export const TrendingMovie: FC = () => {
         Trending Movies
       </Typography>
       <HorizontalSlider>
-        {data?.results.map((movie: ITrendingResultObject, index: number) => {
+        {data?.results.map((item: ITrendingResultObject, index: number) => {
           return (
             <CardWithGlassEffect
               key={index}
-              releaseDate={movie?.release_date}
-              title={movie?.title}
-              posterPath={movie?.poster_path}
-              voteAverage={movie?.vote_average}
-              link={`/movie/${movie?.id}`}
+              releaseDate={item?.release_date}
+              title={item?.title}
+              posterPath={item?.poster_path}
+              voteAverage={item?.vote_average}
+              link={`/movie/${item?.id}`}
             />
           )
         })}
