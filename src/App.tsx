@@ -1,7 +1,7 @@
 import { Box, CssBaseline, Toolbar } from '@mui/material'
 import React, { FC } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { AppbarWithDrawer, Container, TrendingMovies, TrendingPeople, TrendingTVShows } from './components'
+import { AppbarWithDrawer } from './components'
 import { Homepage, MovieDetailsPage } from './pages'
 
 const App: FC = () => {
@@ -9,21 +9,12 @@ const App: FC = () => {
     <React.Fragment>
       <CssBaseline />
       <AppbarWithDrawer />
-      <Routes>
-        <Route path='/' element={<Homepage />} />
-        <Route path='/movie/:id' element={<MovieDetailsPage />} />
-      </Routes>
+      <Toolbar />
       <Box component='main'>
-        <Toolbar />
-        <Container>
-          <TrendingMovies />
-        </Container>
-        <Container>
-          <TrendingTVShows />
-        </Container>
-        <Container>
-          <TrendingPeople />
-        </Container>
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/movie/:id' element={<MovieDetailsPage />} />
+        </Routes>
       </Box>
     </React.Fragment>
   )
