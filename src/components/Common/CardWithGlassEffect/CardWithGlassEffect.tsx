@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, keyframes, styled, Typography, Zoom } from '@mui/material'
+import { Card, CardContent, CardMedia, keyframes, styled, Typography } from '@mui/material'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { GlassEffect, RatingWithTooltip } from '../..'
@@ -16,7 +16,7 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
   const { releaseDate, imagePath, title, voteAverage, link } = props
   const move = keyframes`
     from { 
-      opacity: 0;
+      opacity: 0.15;
     }
     to { 
       opacity: 1;
@@ -50,34 +50,34 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
 
   return (
     // <Zoom in timeout={1000}>
-      <Card sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
-        <Link to={link} style={{ textDecoration: 'none' }}>
-          <CardImage
-            sx={{ height: '300px', position: 'relative', overflow: 'hidden' }}
-            image={imagePath !== null ? `https://image.tmdb.org/t/p/w500/${imagePath}` : BlackImage}
-            title={title}
-          >
-            <GlassEffect />
-          </CardImage>
-          <CardContent
-            sx={{
-              display: 'flex',
-              flexDirection: 'column ',
-              justifyContent: 'flex-start',
-              alignItems: 'flex-start !important',
-              padding: '16px !important'
-            }}
-          >
-            <Title variant='h6' gutterBottom>
-              {title}
-            </Title>
-            <Date variant='subtitle1' gutterBottom>
-              {releaseDate}
-            </Date>
-            {voteAverage !== undefined && <RatingWithTooltip voteAverage={voteAverage} />}
-          </CardContent>
-        </Link>
-      </Card>
+    <Card sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
+      <Link to={link} style={{ textDecoration: 'none' }}>
+        <CardImage
+          sx={{ height: '300px', position: 'relative', overflow: 'hidden', background: '#000000' }}
+          image={imagePath !== null ? `https://image.tmdb.org/t/p/w500/${imagePath}` : BlackImage}
+          title={title}
+        >
+          <GlassEffect />
+        </CardImage>
+        <CardContent
+          sx={{
+            display: 'flex',
+            flexDirection: 'column ',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start !important',
+            padding: '16px !important'
+          }}
+        >
+          <Title variant='h6' gutterBottom>
+            {title}
+          </Title>
+          <Date variant='subtitle1' gutterBottom>
+            {releaseDate}
+          </Date>
+          {voteAverage !== undefined && <RatingWithTooltip voteAverage={voteAverage} />}
+        </CardContent>
+      </Link>
+    </Card>
     // </Zoom>
   )
 }
