@@ -45,7 +45,9 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
     height: '300px',
     position: 'relative',
     overflow: 'hidden',
-    animation: `${move} 3s normal`
+    animation: `${move} 3s normal`,
+    background: '#000000',
+    backgroundSize: 'contain'
   }))
 
   return (
@@ -53,7 +55,6 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
     <Card sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
       <Link to={link} style={{ textDecoration: 'none' }}>
         <CardImage
-          sx={{ height: '300px', position: 'relative', overflow: 'hidden', background: '#000000' }}
           image={imagePath !== null ? `https://image.tmdb.org/t/p/w500/${imagePath}` : BlackImage}
           title={title}
         >
