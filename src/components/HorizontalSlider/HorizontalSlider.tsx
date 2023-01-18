@@ -1,6 +1,7 @@
 import { Box } from '@mui/material'
 import { FC } from 'react'
 import Slider from 'react-slick'
+import { ArrowNext, ArrowPrev } from '../SVGComponents'
 
 interface IHorizontalSlider {
   children: React.ReactNode
@@ -10,8 +11,10 @@ export const HorizontalSlider: FC<IHorizontalSlider> = ({ children }) => {
     slidesToShow: 6,
     slidesToScroll: 6,
     dots: false,
-    arrows: false,
+    arrows: true,
     infinite: false,
+    prevArrow: <ArrowPrev />,
+    nextArrow: <ArrowNext />,
     responsive: [
       {
         breakpoint: 1200,
