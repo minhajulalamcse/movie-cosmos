@@ -1,9 +1,11 @@
-import { Box, styled, Typography, useTheme } from '@mui/material'
+import { Box, Button, styled, Typography, useTheme } from '@mui/material'
 import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { NoDataFoundIllustration } from '../../../assets'
 
 export const NoDataFound: FC = () => {
   const theme = useTheme()
+  const navigate = useNavigate()
 
   const Img = styled('img')(({ theme }) => ({
     height: '400px',
@@ -14,6 +16,10 @@ export const NoDataFound: FC = () => {
       height: '300px'
     }
   }))
+
+  const handleGoBack = (): void => {
+    navigate('/')
+  }
 
   return (
     <Box
@@ -29,6 +35,10 @@ export const NoDataFound: FC = () => {
       <Typography variant='body1' textAlign='center' fontWeight={theme.typography.fontWeightMedium}>
         No data found
       </Typography>
+
+      <Button variant='contained' color='primary' size='medium' onClick={handleGoBack}>
+        Go back to Homepage
+      </Button>
     </Box>
   )
 }

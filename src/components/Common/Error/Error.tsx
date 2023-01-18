@@ -1,9 +1,11 @@
-import { Box, styled, Typography, useTheme } from '@mui/material'
+import { Box, Button, styled, Typography, useTheme } from '@mui/material'
 import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { ErrorIllustration } from '../../../assets'
 
 export const Error: FC = () => {
   const theme = useTheme()
+  const navigate = useNavigate()
 
   const Img = styled('img')(({ theme }) => ({
     height: '400px',
@@ -15,6 +17,9 @@ export const Error: FC = () => {
     }
   }))
 
+  const handleGoBack = (): void => {
+    navigate('/')
+  }
   return (
     <Box
       sx={{
@@ -29,6 +34,9 @@ export const Error: FC = () => {
       <Typography variant='body1' textAlign='center' fontWeight={theme.typography.fontWeightMedium}>
         Something went wrong
       </Typography>
+      <Button variant='contained' color='primary' size='medium' onClick={handleGoBack}>
+        Go back to Homepage
+      </Button>
     </Box>
   )
 }
