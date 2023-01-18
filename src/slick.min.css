@@ -22,7 +22,7 @@
 }
 .slick-list {
   overflow: hidden;
-  margin: 0 25px;
+  margin: 0 0px;
   padding: 0;
 }
 .slick-list:focus {
@@ -84,8 +84,7 @@
 .slick-track {
   display: flex;
   cursor: grab;
-  gap: 20px;
 }
 .slick-track .slick-slide {
-  margin: 0;
+  margin: 0 10px 0 10px;
 }

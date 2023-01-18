@@ -7,7 +7,7 @@ interface ICommonContainer {
 }
 export const CommonContainer: FC<ICommonContainer> = ({ children }) => {
   return (
-    <Box maxWidth={`${maxWidth}px`} width='100%' margin='24px auto'>
+    <Box maxWidth={`${maxWidth}px`} width='100%' margin='24px auto' padding=' 0 40px'>
       {children}
     </Box>
   )

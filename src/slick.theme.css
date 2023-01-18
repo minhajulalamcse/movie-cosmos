@@ -22,7 +22,7 @@
   line-height: 0;
   top: 50%;
   width: 50px;
-  height: 60px;
+  height: 100px;
   -webkit-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
@@ -58,7 +58,7 @@
   color: #f5c518;
 }
 .slick-prev {
-  left: 20px;
+  left: -15px;
   border: 1px solid rgb(0, 0, 0, 0.5);
   box-shadow: 0 0px 5px #00000050;
   border-radius: 4px;
@@ -77,7 +77,7 @@
   content: '';
 }
 .slick-next {
-  right: 5px;
+  right: -15px;
   border: 1px solid rgb(0, 0, 0, 0.5);
   box-shadow: 0 0px 5px #00000050;
   border-radius: 4px;
