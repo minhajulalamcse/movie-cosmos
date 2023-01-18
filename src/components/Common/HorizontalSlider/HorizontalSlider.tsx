@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import { FC } from 'react'
 import Slider from 'react-slick'
-import { ArrowNext, ArrowPrev } from '../SVGComponents'
+import { ArrowNext, ArrowPrev } from '../../SVGComponents'
 
 interface IHorizontalSlider {
   children: React.ReactNode
