@@ -2,17 +2,18 @@ import { Card, CardContent, CardMedia, styled, Typography } from '@mui/material'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { GlassEffect, RatingWithTooltip } from '../..'
+import { BlackImage } from '../../../assets'
 
 interface ICardWithGlassEffect {
   releaseDate?: string
-  posterPath: string | null
+  imagePath: string | null
   title: string
   voteAverage?: number | undefined
   link: string
 }
 
 export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
-  const { releaseDate, posterPath, title, voteAverage, link } = props
+  const { releaseDate, imagePath, title, voteAverage, link } = props
   const Title = styled(Typography)(({ theme }) => ({
     display: '-webkit-box',
     WebkitLineClamp: '2',
@@ -36,7 +37,7 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
       <Link to={link} style={{ textDecoration: 'none' }}>
         <CardMedia
           sx={{ height: '300px', position: 'relative', overflow: 'hidden' }}
-          image={posterPath !== null ? `https://image.tmdb.org/t/p/w500/${posterPath}` : ''}
+          image={imagePath !== null ? `https://image.tmdb.org/t/p/w500/${imagePath}` : BlackImage}
           title={title}
         >
           <GlassEffect />

@@ -29,7 +29,7 @@ export const TrendingMovies: FC = () => {
               key={index}
               releaseDate={item?.release_date}
               title={item?.title}
-              posterPath={item?.poster_path}
+              imagePath={item?.poster_path}
               voteAverage={item?.vote_average}
               link={`/movie/${item?.id}`}
             />

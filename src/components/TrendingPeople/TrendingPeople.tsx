@@ -29,7 +29,7 @@ export const TrendingPeople: FC = () => {
               key={index}
               releaseDate={item?.known_for_department}
               title={item?.name}
-              posterPath={item?.profile_path}
+              imagePath={item?.profile_path}
               link={`/${item?.id}`}
             />
           )
