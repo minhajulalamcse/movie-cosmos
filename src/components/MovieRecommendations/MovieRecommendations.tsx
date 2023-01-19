@@ -39,6 +39,7 @@ export const MovieRecommendations: FC = () => {
               title={item?.title}
               subTitle={item?.release_date}
               imagePath={item?.poster_path}
+              voteAverage={item?.vote_average}
               link={`/movie/${item?.id}`}
               glassEffect={true}
             />
