@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { IGenreMovieListGetResponse } from '../interfaces/genres/IGenreMovieListGetResponse'
 import { IMovieCreditsGetResponse } from '../interfaces/movies/IMovieCreditsGetResponse'
 import { IMovieDetailsGetResponse } from '../interfaces/movies/IMovieDetailsGetResponse'
 import { IMovieGetRecommendationsGetResponse } from '../interfaces/movies/IMovieGetRecommendationsGetResponse'
@@ -85,6 +86,11 @@ export const tmdbApi = createApi({
       query: () => {
         return `movie/upcoming?api_key=${TMDB_API_KEY}`
       }
+    }),
+    getGenres: builder.query<IGenreMovieListGetResponse, null>({
+      query: () => {
+        return `genre/movie/list?api_key=${TMDB_API_KEY}`
+      }
     })
   })
 })
@@ -101,5 +107,6 @@ export const {
   useGetNowPlayingMoviesQuery,
   useGetPopularMoviesQuery,
   useGetTopRatedMoviesQuery,
-  useGetUpcomingMoviesQuery
+  useGetUpcomingMoviesQuery,
+  useGetGenresQuery
 } = tmdbApi
