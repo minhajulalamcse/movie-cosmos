@@ -1,7 +1,7 @@
 import { Box, Tab, Tabs, Typography, useTheme } from '@mui/material'
 import { FC, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Error, Loading, MoviePosterBackdropsTab } from '..'
+import { Error, Loading, MovieBackdropsTab, MoviePostersTab } from '..'
 import { useGetMovieImagesQuery } from '../../services/tmdb'
 import { NoDataFound } from '../Common/NoDataFound/NoDataFound'
 
@@ -67,10 +67,10 @@ export const MovieMediaSection: FC = () => {
         <Tab label='Backdrops' />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <MoviePosterBackdropsTab images={data?.posters} columnCount={5} imageCount={9}/>
+        <MoviePostersTab images={data?.posters} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <MoviePosterBackdropsTab images={data?.backdrops} columnCount={3} imageCount={8}/>
+        <MovieBackdropsTab images={data?.backdrops} />
       </TabPanel>
     </Box>
   )
