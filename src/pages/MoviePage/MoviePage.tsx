@@ -2,7 +2,7 @@ import { Container, Grid } from '@mui/material'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../app/store'
-import { CardWithGlassEffect, Error, NoDataFound } from '../../components'
+import { CardWithGlassEffect, Error, Filters, NoDataFound } from '../../components'
 import { LoadingGridList } from '../../components/Common/LoadingGridList/LoadingGridList'
 import { IMovieDetailsGetResponse } from '../../interfaces/movies/IMovieDetailsGetResponse'
 import { useGetMoviesByCategoryQuery } from '../../services/tmdb'
@@ -24,9 +24,9 @@ export const MoviePage: FC = () => {
     <Container sx={{ margin: '24px auto' }}>
       <Grid container spacing={3}>
         <Grid item xs={12} lg={3}>
-          Filters
+          <Filters />
         </Grid>
-        <Grid item xs={12} lg={9}>
+        <Grid item xs={12} lg={9} mt={3.5}>
           <Grid container spacing={3}>
             {data?.results.map((movie: IMovieDetailsGetResponse, index: number) => {
               return (
