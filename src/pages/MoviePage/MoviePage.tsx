@@ -1,12 +1,15 @@
 import { Container, Grid } from '@mui/material'
 import { FC } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../app/store'
 import { CardWithGlassEffect, Error, NoDataFound } from '../../components'
 import { LoadingGridList } from '../../components/Common/LoadingGridList/LoadingGridList'
 import { IMovieDetailsGetResponse } from '../../interfaces/movies/IMovieDetailsGetResponse'
-import { useGetPopularMoviesQuery } from '../../services/tmdb'
+import { useGetMoviesByCategoryQuery } from '../../services/tmdb'
 
 export const MoviePage: FC = () => {
-  const { data, isLoading, isError } = useGetPopularMoviesQuery(null)
+  const { categoryName } = useSelector((state: RootState) => state?.movie)
+  const { data, isLoading, isError } = useGetMoviesByCategoryQuery(categoryName)
 
   if (isError) {
     return <Error />

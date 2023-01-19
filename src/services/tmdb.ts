@@ -61,6 +61,11 @@ export const tmdbApi = createApi({
         return `movie/${movieId}/images?api_key=${TMDB_API_KEY}`
       }
     }),
+    getMoviesByCategory: builder.query<IMovieNowPlayingGetResponse, string>({
+      query: (categoryName) => {
+        return `movie/${categoryName}?api_key=${TMDB_API_KEY}`
+      }
+    }),
     getNowPlayingMovies: builder.query<IMovieNowPlayingGetResponse, null>({
       query: () => {
         return `movie/now_playing?api_key=${TMDB_API_KEY}`
@@ -92,6 +97,7 @@ export const {
   useGetMovieRecommendationsQuery,
   useGetMovieVideosQuery,
   useGetMovieImagesQuery,
+  useGetMoviesByCategoryQuery,
   useGetNowPlayingMoviesQuery,
   useGetPopularMoviesQuery,
   useGetTopRatedMoviesQuery,
