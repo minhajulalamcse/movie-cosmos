@@ -1,6 +1,7 @@
 import { Container, Grid } from '@mui/material'
 import { FC } from 'react'
-import { CardWithGlassEffect, Error, Loading, NoDataFound } from '../../components'
+import { CardWithGlassEffect, Error, NoDataFound } from '../../components'
+import { LoadingGridList } from '../../components/Common/LoadingGridList/LoadingGridList'
 import { IMovieDetailsGetResponse } from '../../interfaces/movies/IMovieDetailsGetResponse'
 import { useGetPopularMoviesQuery } from '../../services/tmdb'
 
@@ -11,7 +12,7 @@ export const MoviePage: FC = () => {
     return <Error />
   }
   if (isLoading) {
-    return <Loading />
+    return <LoadingGridList />
   }
   if (data === null || data === undefined) {
     return <NoDataFound />
