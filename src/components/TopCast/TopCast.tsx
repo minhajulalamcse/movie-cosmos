@@ -25,7 +25,7 @@ export const TopCast: FC = () => {
   }
 
   return (
-    <Box display='flex' flexDirection='column' alignItems='flex-start' justifyContent='flex-start'>
+    <Box display='flex' flexDirection='column' alignItems='flex-start' justifyContent='flex-start' px={3} my={3}>
       <Typography variant='h5' fontWeight={theme.typography.fontWeightMedium} mb={2} ml='10px'>
         Top Cast
       </Typography>
@@ -38,6 +38,7 @@ export const TopCast: FC = () => {
               subTitle={item?.known_for_department}
               imagePath={item?.profile_path}
               link={`/person/${item?.id}`}
+              glassEffect={false}
             />
           )
         })}

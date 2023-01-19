@@ -10,10 +10,11 @@ interface ICardWithGlassEffect {
   title: string
   voteAverage?: number | undefined
   link: string
+  glassEffect?: boolean
 }
 
 export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
-  const { subTitle, imagePath, title, voteAverage, link } = props
+  const { subTitle, imagePath, title, voteAverage, link, glassEffect } = props
   const move = keyframes`
     from { 
       opacity: 0.15;
@@ -47,18 +48,17 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
     overflow: 'hidden',
     animation: `${move} 3s normal`,
     backgroundColor: '#000000',
-    backgroundSize: 'contain'
+    backgroundPosition: 'contain'
   }))
 
   return (
-    // <Zoom in timeout={1000}>
     <Card sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
       <Link to={link} style={{ textDecoration: 'none' }}>
         <CardImage
           image={imagePath !== null ? `https://image.tmdb.org/t/p/w500/${imagePath}` : BlackImage}
           title={title}
         >
-          <GlassEffect />
+          {(glassEffect ?? false) && <GlassEffect />}
         </CardImage>
         <CardContent
           sx={{
@@ -79,6 +79,5 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
         </CardContent>
       </Link>
     </Card>
-    // </Zoom>
   )
 }

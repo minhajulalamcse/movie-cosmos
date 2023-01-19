@@ -12,6 +12,7 @@ import ShowMoreText from 'react-show-more-text'
 import { BlackImage } from '../../assets'
 import { IMovieDetailsGetResponse } from '../../interfaces/movies/IMovieDetailsGetResponse'
 import { getFormattedDate, getYearFromDate, toHoursAndMinutes } from '../../utils'
+import { Container } from '../Common/Container/Container'
 import { GlassEffect } from '../Common/GlassEffect/GlassEffect'
 
 interface IMovieInformation {
@@ -42,10 +43,7 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
     padding: '32px',
     color: theme.palette.common.white,
     background: `linear-gradient(0,rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 100%
-    )`,
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end'
+    )`
   }))
 
   const OverviewText = styled(Typography)(({ theme }) => ({
@@ -65,156 +63,164 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
   return (
     <React.Fragment>
       <TopSectionInfoWrapper>
-        <Box display='flex' justifyContent='space-between' alignItems='center'>
-          <IconButton color='inherit' aria-label={'back'} size='medium' onClick={handleBack}>
-            <ArrowBackIcon />
-          </IconButton>
-          <Box display='flex' gap='10px'>
-            <IconButton
-              color='inherit'
-              aria-label={`${movie?.title} website`}
-              size='medium'
-              href={movie?.homepage != null ? movie?.homepage : '#'}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <LanguageIcon />
+        <Container>
+          <Box display='flex' justifyContent='space-between' alignItems='center'>
+            <IconButton color='inherit' aria-label={'back'} size='medium' onClick={handleBack}>
+              <ArrowBackIcon />
             </IconButton>
-            <IconButton
-              color='inherit'
-              aria-label={`imdb ${movie?.title} page`}
-              size='medium'
-              href={movie?.imdb_id !== null ? `https://www.imdb.com/title/${movie?.imdb_id}` : '#'}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <MovieIcon />
-            </IconButton>
-            <IconButton color='inherit' aria-label={'watch later'} size='medium' onClick={handleAddToWatchList}>
-              <WatchLaterIcon />
-            </IconButton>
-            <IconButton color='inherit' aria-label={'favorite'} size='medium' onClick={handleFavorite}>
-              <FavoriteBorderOutlinedIcon />
-            </IconButton>
+            <Box display='flex' gap='10px'>
+              <IconButton
+                color='inherit'
+                aria-label={`${movie?.title} website`}
+                size='medium'
+                href={movie?.homepage != null ? movie?.homepage : '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <LanguageIcon />
+              </IconButton>
+              <IconButton
+                color='inherit'
+                aria-label={`imdb ${movie?.title} page`}
+                size='medium'
+                href={movie?.imdb_id !== null ? `https://www.imdb.com/title/${movie?.imdb_id}` : '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <MovieIcon />
+              </IconButton>
+              <IconButton color='inherit' aria-label={'watch later'} size='medium' onClick={handleAddToWatchList}>
+                <WatchLaterIcon />
+              </IconButton>
+              <IconButton color='inherit' aria-label={'favorite'} size='medium' onClick={handleFavorite}>
+                <FavoriteBorderOutlinedIcon />
+              </IconButton>
+            </Box>
           </Box>
-        </Box>
+        </Container>
       </TopSectionInfoWrapper>
       <BottomSectionInfoWrapper>
-        <Card
-          sx={{
-            width: '400px',
-            height: '450px',
-            boxShadow: 3,
-            borderRadius: 2,
-            position: 'relative',
-            display: { xs: 'none', md: 'block' }
-          }}
-        >
-          <CardMedia
-            sx={{
-              width: '100%',
-              height: '100%',
-              backgroundColor: '#000'
-            }}
-            image={movie?.poster_path !== null ? `https://image.tmdb.org/t/p/w500/${movie?.poster_path}` : BlackImage}
-            title={movie?.title}
-          >
-            <GlassEffect />
-          </CardMedia>
-        </Card>
-        <Box
-          ml={2}
-          display='flex'
-          flexDirection='column'
-          justifyContent='flex-end'
-          alignItems='flex-start'
-          width='100%'
-        >
-          <Typography variant='h4' fontWeight={theme.typography.fontWeightBold} color='inherit'>
-            {movie?.title}{' '}
-            <Typography
-              variant='h4'
-              fontWeight={theme.typography.fontWeightRegular}
-              color={alpha('#ffffff', 0.8)}
-              display='inline-block'
+        <Container>
+          <Box display='flex' justifyContent='flex-start' alignItems='flex-end'>
+            <Card
+              sx={{
+                width: '400px',
+                height: '450px',
+                boxShadow: 3,
+                borderRadius: 2,
+                position: 'relative',
+                display: { xs: 'none', md: 'block' }
+              }}
             >
-              ({getYearFromDate(movie?.release_date)})
-            </Typography>
-          </Typography>
-          <Box display='flex' alignItems='center' gap='10px' mt={1}>
-            <Typography color='inherit' fontWeight={theme.typography.fontWeightMedium}>
-              {getFormattedDate(movie?.release_date)}
-            </Typography>
-            &bull;
-            <Typography color='inherit' fontWeight={theme.typography.fontWeightMedium}>
-              {toHoursAndMinutes(movie?.runtime)}
-            </Typography>
-          </Box>
-          <Typography
-            variant='subtitle1'
-            fontWeight={theme.typography.fontWeightRegular}
-            fontStyle='italic'
-            gutterBottom
-            color={alpha('#ffffff', 0.9)}
-          >
-            {movie?.tagline}
-          </Typography>
-          <Typography variant='h6' fontWeight={theme.typography.fontWeightMedium} gutterBottom color='inherit'>
-            Overview
-          </Typography>
-          <OverviewText
-            variant='body2'
-            fontWeight={theme.typography.fontWeightMedium}
-            letterSpacing={0.5}
-            color={alpha('#ffffff', 0.8)}
-          >
-            <ShowMoreText
-              lines={1}
-              more='Show more'
-              less='Show less'
-              className='content-css'
-              anchorClass='show-more-less-clickable'
-              expanded={false}
-              truncatedEndingComponent={'... '}
+              <CardMedia
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  backgroundColor: '#000'
+                }}
+                image={
+                  movie?.poster_path !== null ? `https://image.tmdb.org/t/p/w500/${movie?.poster_path}` : BlackImage
+                }
+                title={movie?.title}
+              >
+                <GlassEffect />
+              </CardMedia>
+            </Card>
+            <Box
+              ml={{ xs: 0, md: 2 }}
+              display='flex'
+              flexDirection='column'
+              justifyContent='flex-end'
+              alignItems='flex-start'
+              width='100%'
             >
-              {movie?.overview}
-            </ShowMoreText>
-          </OverviewText>
-          <Box
-            display='flex'
-            alignItems='flex-start'
-            justifyContent='space-between'
-            color={alpha('#ffffff', 0.8)}
-            mt={1}
-            sx={{ flexDirection: { xs: 'column', md: 'row' } }}
-          >
-            <Box mt={1}>
-              <Box display='flex' flexDirection='column' justifyContent='center' alignItems='flex-start'>
-                <Box display='flex' alignItems='center' gap={'10px'}>
-                  <Rating
-                    size='small'
-                    readOnly
-                    value={movie.vote_average / 2}
-                    precision={0.1}
-                    sx={{
-                      '.MuiRating-icon.MuiRating-iconEmpty': {
-                        color: '#ffffff50'
-                      }
-                    }}
-                  />
-                  <Typography color='inherit' variant='body2' fontWeight={theme.typography.fontWeightMedium}>
-                    {(movie?.vote_average).toPrecision(2)} / 10
-                  </Typography>
-                </Box>
-                <Box display='flex' alignItems='center' gap={'10px'}>
-                  <Typography color='inherit' variant='body2' fontWeight={theme.typography.fontWeightMedium}>
-                    {movie?.vote_count} reviews
-                  </Typography>
+              <Typography variant='h4' fontWeight={theme.typography.fontWeightBold} color='inherit'>
+                {movie?.title}{' '}
+                <Typography
+                  variant='h4'
+                  fontWeight={theme.typography.fontWeightRegular}
+                  color={alpha('#ffffff', 0.8)}
+                  display='inline-block'
+                >
+                  ({getYearFromDate(movie?.release_date)})
+                </Typography>
+              </Typography>
+              <Box display='flex' alignItems='center' gap='10px' mt={1}>
+                <Typography color='inherit' fontWeight={theme.typography.fontWeightMedium}>
+                  {getFormattedDate(movie?.release_date)}
+                </Typography>
+                &bull;
+                <Typography color='inherit' fontWeight={theme.typography.fontWeightMedium}>
+                  {toHoursAndMinutes(movie?.runtime)}
+                </Typography>
+              </Box>
+              <Typography
+                variant='subtitle1'
+                fontWeight={theme.typography.fontWeightRegular}
+                fontStyle='italic'
+                gutterBottom
+                color={alpha('#ffffff', 0.9)}
+              >
+                {movie?.tagline}
+              </Typography>
+              <Typography variant='h6' fontWeight={theme.typography.fontWeightMedium} gutterBottom color='inherit'>
+                Overview
+              </Typography>
+              <OverviewText
+                variant='body2'
+                fontWeight={theme.typography.fontWeightMedium}
+                letterSpacing={0.5}
+                color={alpha('#ffffff', 0.8)}
+              >
+                <ShowMoreText
+                  lines={1}
+                  more='Show more'
+                  less='Show less'
+                  className='content-css'
+                  anchorClass='show-more-less-clickable'
+                  expanded={false}
+                  truncatedEndingComponent={'... '}
+                >
+                  {movie?.overview}
+                </ShowMoreText>
+              </OverviewText>
+              <Box
+                display='flex'
+                alignItems='flex-start'
+                justifyContent='space-between'
+                color={alpha('#ffffff', 0.8)}
+                mt={1}
+                sx={{ flexDirection: { xs: 'column', md: 'row' } }}
+              >
+                <Box mt={1}>
+                  <Box display='flex' flexDirection='column' justifyContent='center' alignItems='flex-start'>
+                    <Box display='flex' alignItems='center' gap={'10px'}>
+                      <Rating
+                        size='small'
+                        readOnly
+                        value={movie.vote_average / 2}
+                        precision={0.1}
+                        sx={{
+                          '.MuiRating-icon.MuiRating-iconEmpty': {
+                            color: '#ffffff50'
+                          }
+                        }}
+                      />
+                      <Typography color='inherit' variant='body2' fontWeight={theme.typography.fontWeightMedium}>
+                        {(movie?.vote_average).toPrecision(2)} / 10
+                      </Typography>
+                    </Box>
+                    <Box display='flex' alignItems='center' gap={'10px'}>
+                      <Typography color='inherit' variant='body2' fontWeight={theme.typography.fontWeightMedium}>
+                        {movie?.vote_count} reviews
+                      </Typography>
+                    </Box>
+                  </Box>
                 </Box>
               </Box>
             </Box>
           </Box>
-        </Box>
+        </Container>
         {/* <MovieGenreList genres={movie?.genres} /> */}
       </BottomSectionInfoWrapper>
     </React.Fragment>

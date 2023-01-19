@@ -8,8 +8,8 @@ interface IHorizontalSlider {
 }
 export const HorizontalSlider: FC<IHorizontalSlider> = ({ children }) => {
   const settings = {
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     dots: false,
     arrows: true,
     infinite: false,

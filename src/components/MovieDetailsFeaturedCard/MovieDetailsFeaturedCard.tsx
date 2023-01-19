@@ -56,7 +56,7 @@ export const MovieDetailsFeaturedCard: FC = () => {
           backgroundPosition: 'top center',
           width: '100%',
           transition: '0.3s all ease-in-out',
-          minHeight: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' }
+          minHeight: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)', lg: '80vh' }
         }}
         image={data?.backdrop_path !== null ? `https://image.tmdb.org/t/p/original/${data?.backdrop_path}` : BlackImage}
         title={data.title}

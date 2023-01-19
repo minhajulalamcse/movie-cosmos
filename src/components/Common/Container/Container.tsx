@@ -7,7 +7,7 @@ interface IContainer {
 }
 export const Container: FC<IContainer> = ({ children }) => {
   return (
-    <Box maxWidth={`${maxWidth}px`} width='100%' margin='24px auto' padding=' 0 40px'>
+    <Box maxWidth={`${maxWidth}px`} width='100%' margin='0 auto' height='100%' position='relative'>
       {children}
     </Box>
   )
