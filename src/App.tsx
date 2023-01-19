@@ -2,7 +2,7 @@ import { Box, CssBaseline, Toolbar } from '@mui/material'
 import React, { FC } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { AppbarWithDrawer } from './components'
-import { HomePage, MovieDetailsPage } from './pages'
+import { HomePage, MovieDetailsPage, MoviePage } from './pages'
 
 const App: FC = () => {
   return (
@@ -13,6 +13,7 @@ const App: FC = () => {
       <Box component='main'>
         <Routes>
           <Route path='/' element={<HomePage />} />
+          <Route path='/movies' element={<MoviePage />} />
           <Route path='/movie/:id' element={<MovieDetailsPage />} />
         </Routes>
       </Box>
