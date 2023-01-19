@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import ShowMoreText from 'react-show-more-text'
 import { BlackImage } from '../../assets'
 import { IMovieDetailsGetResponse } from '../../interfaces/movies/IMovieDetailsGetResponse'
-import { getFormattedDate, getYearFromDate, toHoursAndMinutes } from '../../utils'
+import { getFormattedDate, toHoursAndMinutes } from '../../utils'
 import { GlassEffect } from '../Common/GlassEffect/GlassEffect'
 
 interface IMovieInformation {
@@ -45,12 +45,11 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
     )`
   }))
 
-  const OverviewText = styled(Typography)(({ theme }) => ({
+  const OverviewText = styled(Box)(({ theme }) => ({
     width: '100%',
     lineHeight: '20px',
-    [theme.breakpoints.down('md')]: {
-      width: '100%'
-    }
+    color: '#e6e6e6',
+    fontWeight: theme.typography.fontWeightMedium
   }))
 
   const handleBack = (): void => {
@@ -134,15 +133,7 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
               width='100%'
             >
               <Typography variant='h4' fontWeight={theme.typography.fontWeightBold} color='inherit'>
-                {movie?.title}{' '}
-                <Typography
-                  variant='h4'
-                  fontWeight={theme.typography.fontWeightRegular}
-                  color={alpha('#ffffff', 0.8)}
-                  display='inline-block'
-                >
-                  ({getYearFromDate(movie?.release_date)})
-                </Typography>
+                {movie?.title}
               </Typography>
               <Box display='flex' alignItems='center' gap='10px' mt={1}>
                 <Typography color='inherit' fontWeight={theme.typography.fontWeightMedium}>
@@ -165,12 +156,7 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
               <Typography variant='h6' fontWeight={theme.typography.fontWeightMedium} gutterBottom color='inherit'>
                 Overview
               </Typography>
-              <OverviewText
-                variant='body2'
-                fontWeight={theme.typography.fontWeightMedium}
-                letterSpacing={0.5}
-                color={alpha('#ffffff', 0.8)}
-              >
+              <OverviewText>
                 <ShowMoreText
                   lines={1}
                   more='Show more'
