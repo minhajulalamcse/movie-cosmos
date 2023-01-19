@@ -43,7 +43,7 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
   }))
 
   const CardImage = styled(CardMedia)(({ theme }) => ({
-    height: '300px',
+    height: '250px',
     position: 'relative',
     overflow: 'hidden',
     animation: `${move} 3s normal`,

@@ -5,11 +5,18 @@ import { ArrowNext, ArrowPrev } from '../../SVGComponents'
 
 interface IHorizontalSlider {
   children: React.ReactNode
+  xs?: number
+  sm?: number
+  md?: number
+  lg?: number
+  xl?: number
+  xxl?: number
 }
-export const HorizontalSlider: FC<IHorizontalSlider> = ({ children }) => {
+export const HorizontalSlider: FC<IHorizontalSlider> = (props) => {
+  const { children, xs = 1, sm = 2, md = 3, lg = 4, xl = 5, xxl = 6 } = props
   const settings = {
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: xxl,
+    slidesToScroll: xxl,
     dots: false,
     arrows: true,
     infinite: false,
@@ -19,36 +26,36 @@ export const HorizontalSlider: FC<IHorizontalSlider> = ({ children }) => {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5
+          slidesToShow: xl,
+          slidesToScroll: xl
         }
       },
       {
         breakpoint: 1100,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4
+          slidesToShow: lg,
+          slidesToScroll: lg
         }
       },
       {
         breakpoint: 900,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToShow: md,
+          slidesToScroll: md
         }
       },
       {
         breakpoint: 700,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
+          slidesToShow: sm,
+          slidesToScroll: sm
         }
       },
       {
         breakpoint: 500,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: xs,
+          slidesToScroll: xs
         }
       }
     ]

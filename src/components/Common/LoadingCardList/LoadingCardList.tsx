@@ -11,7 +11,7 @@ interface ILoadingCardList {
 export const LoadingCardList: FC<ILoadingCardList> = ({ title }) => {
   const theme = useTheme()
   return (
-    <Box display='flex' flexDirection='column' alignItems='flex-start' justifyContent='flex-start'>
+    <Box display='flex' flexDirection='column' alignItems='flex-start' justifyContent='flex-start' px={3} my={3}>
       {title != null && (
         <Typography variant='h5' fontWeight={theme.typography.fontWeightMedium} mb={2} ml='10px'>
           {title}
@@ -22,7 +22,7 @@ export const LoadingCardList: FC<ILoadingCardList> = ({ title }) => {
           return (
             <Card key={index} sx={{ boxShadow: 2, borderRadius: 2, mb: 1 }}>
               <CardMedia
-                sx={{ height: '300px', position: 'relative', overflow: 'hidden', opacity: 0.15 }}
+                sx={{ height: '250px', position: 'relative', overflow: 'hidden', opacity: 0.15 }}
                 image={BlackImage}
                 title={title}
               >
