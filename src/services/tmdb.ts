@@ -3,6 +3,10 @@ import { IMovieCreditsGetResponse } from '../interfaces/movies/IMovieCreditsGetR
 import { IMovieDetailsGetResponse } from '../interfaces/movies/IMovieDetailsGetResponse'
 import { IMovieGetRecommendationsGetResponse } from '../interfaces/movies/IMovieGetRecommendationsGetResponse'
 import { IMovieImagesGetResponse } from '../interfaces/movies/IMovieImagesGetResonse'
+import { IMovieNowPlayingGetResponse } from '../interfaces/movies/IMovieNowPlayingGetResponse'
+import { IMoviePopularGetResponse } from '../interfaces/movies/IMoviePopularGetResponse'
+import { IMovieTopRatedGetResponse } from '../interfaces/movies/IMovieTopRatedGetResponse'
+import { IMovieUpcomingGetResponse } from '../interfaces/movies/IMovieUpcomingGetResponse'
 import { IMovieVideosGetResponse } from '../interfaces/movies/IMovieVideosGetResponse'
 import { ITrendingMoviesGetResponse } from '../interfaces/trending/ITrendingMoviesGetResponse'
 import { ITrendingParams } from '../interfaces/trending/ITrendingParams'
@@ -56,6 +60,26 @@ export const tmdbApi = createApi({
       query: (movieId) => {
         return `movie/${movieId}/images?api_key=${TMDB_API_KEY}`
       }
+    }),
+    getNowPlayingMovies: builder.query<IMovieNowPlayingGetResponse, null>({
+      query: () => {
+        return `movie/now_playing?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getPopularMovies: builder.query<IMoviePopularGetResponse, null>({
+      query: () => {
+        return `movie/popular?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getTopRatedMovies: builder.query<IMovieTopRatedGetResponse, null>({
+      query: () => {
+        return `movie/top_rated?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getUpcomingMovies: builder.query<IMovieUpcomingGetResponse, null>({
+      query: () => {
+        return `movie/upcoming?api_key=${TMDB_API_KEY}`
+      }
     })
   })
 })
@@ -67,5 +91,9 @@ export const {
   useGetCreditsOfMovieQuery,
   useGetMovieRecommendationsQuery,
   useGetMovieVideosQuery,
-  useGetMovieImagesQuery
+  useGetMovieImagesQuery,
+  useGetNowPlayingMoviesQuery,
+  useGetPopularMoviesQuery,
+  useGetTopRatedMoviesQuery,
+  useGetUpcomingMoviesQuery
 } = tmdbApi
