@@ -29,7 +29,7 @@ export const TopCast: FC = () => {
       <Typography variant='h5' fontWeight={theme.typography.fontWeightMedium} mb={2} ml='10px'>
         Top Cast
       </Typography>
-      <HorizontalSlider>
+      <HorizontalSlider xxl={7}>
         {data?.cast.map((item: IMovieCreditsCast, index: number) => {
           return (
             <CardWithGlassEffect
