@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IGenreMovieListGetResponse } from '../interfaces/genres/IGenreMovieListGetResponse'
+import { IDiscoverMovieGetResponse } from '../interfaces/movies/IDiscoverMovieGetResponse'
+import { IDiscoverMovieParams } from '../interfaces/movies/IDiscoverMovieParams'
 import { IMovieCreditsGetResponse } from '../interfaces/movies/IMovieCreditsGetResponse'
 import { IMovieDetailsGetResponse } from '../interfaces/movies/IMovieDetailsGetResponse'
 import { IMovieGetRecommendationsGetResponse } from '../interfaces/movies/IMovieGetRecommendationsGetResponse'
@@ -62,8 +64,11 @@ export const tmdbApi = createApi({
         return `movie/${movieId}/images?api_key=${TMDB_API_KEY}`
       }
     }),
-    getMoviesByCategory: builder.query<IMovieNowPlayingGetResponse, string>({
+    getMoviesByCategory: builder.query<IMovieNowPlayingGetResponse, string | null>({
       query: (categoryName) => {
+        if (categoryName === null) {
+          return `movie/popular?api_key=${TMDB_API_KEY}`
+        }
         return `movie/${categoryName}?api_key=${TMDB_API_KEY}`
       }
     }),
@@ -91,6 +96,16 @@ export const tmdbApi = createApi({
       query: () => {
         return `genre/movie/list?api_key=${TMDB_API_KEY}`
       }
+    }),
+    getDiscoverMovies: builder.query<IDiscoverMovieGetResponse, IDiscoverMovieParams>({
+      query: (IDiscoverMovieParams) => {
+        return `/discover/movie?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getMovies: builder.query<IDiscoverMovieGetResponse, IDiscoverMovieParams>({
+      query: (IDiscoverMovieParams) => {
+        return `/discover/movie?api_key=${TMDB_API_KEY}`
+      }
     })
   })
 })
@@ -108,5 +123,6 @@ export const {
   useGetPopularMoviesQuery,
   useGetTopRatedMoviesQuery,
   useGetUpcomingMoviesQuery,
-  useGetGenresQuery
+  useGetGenresQuery,
+  useGetDiscoverMoviesQuery
 } = tmdbApi

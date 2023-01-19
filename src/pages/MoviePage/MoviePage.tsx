@@ -9,6 +9,7 @@ import { useGetMoviesByCategoryQuery } from '../../services/tmdb'
 
 export const MoviePage: FC = () => {
   const { categoryName } = useSelector((state: RootState) => state?.movie)
+
   const { data, isLoading, isError } = useGetMoviesByCategoryQuery(categoryName)
 
   if (isError) {
