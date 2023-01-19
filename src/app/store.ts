@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { tmdbApi } from '../services/tmdb'
+import movieReducer from './../features/movieSlice'
 import trendingReducer from './../features/trendingSlice'
 
 export const store = configureStore({
   reducer: {
     [tmdbApi.reducerPath]: tmdbApi.reducer,
-    trending: trendingReducer
+    trending: trendingReducer,
+    movie: movieReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(tmdbApi.middleware)
 })
