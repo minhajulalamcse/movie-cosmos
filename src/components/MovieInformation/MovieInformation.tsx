@@ -12,7 +12,6 @@ import ShowMoreText from 'react-show-more-text'
 import { BlackImage } from '../../assets'
 import { IMovieDetailsGetResponse } from '../../interfaces/movies/IMovieDetailsGetResponse'
 import { getFormattedDate, getYearFromDate, toHoursAndMinutes } from '../../utils'
-// import { Container } from '../Common/Container/Container'
 import { GlassEffect } from '../Common/GlassEffect/GlassEffect'
 
 interface IMovieInformation {
@@ -100,7 +99,7 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
         </Container>
       </TopSectionInfoWrapper>
       <BottomSectionInfoWrapper>
-        <Container>
+        <Container sx={{ px: { xs: 0, md: 2 } }}>
           <Box display='flex' justifyContent='flex-start' alignItems='flex-end'>
             <Card
               sx={{

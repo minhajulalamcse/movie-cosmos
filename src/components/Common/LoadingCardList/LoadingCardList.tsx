@@ -11,7 +11,13 @@ interface ILoadingCardList {
 export const LoadingCardList: FC<ILoadingCardList> = ({ title }) => {
   const theme = useTheme()
   return (
-    <Box display='flex' flexDirection='column' alignItems='flex-start' justifyContent='flex-start' px={3} my={3}>
+    <Box
+      display='flex'
+      flexDirection='column'
+      alignItems='flex-start'
+      justifyContent='flex-start'
+      sx={{ m: '24px auto' }}
+    >
       {title != null && (
         <Typography variant='h5' fontWeight={theme.typography.fontWeightMedium} mb={2} ml='10px'>
           {title}

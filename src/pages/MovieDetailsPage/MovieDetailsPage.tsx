@@ -6,7 +6,7 @@ export const MovieDetailsPage: FC = () => {
   return (
     <Box>
       <MovieDetailsFeaturedCard />
-      <Container>
+      <Container sx={{ m: '24px auto' }}>
         <TopCast />
       </Container>
     </Box>

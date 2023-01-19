@@ -5,13 +5,13 @@ import { TrendingMovies, TrendingPeople, TrendingTVShows } from '../../component
 export const HomePage: FC = () => {
   return (
     <React.Fragment>
-      <Container>
+      <Container sx={{ m: '24px auto' }}>
         <TrendingMovies />
       </Container>
-      <Container>
+      <Container sx={{ m: '24px auto' }}>
         <TrendingTVShows />
       </Container>
-      <Container>
+      <Container sx={{ m: '24px auto' }}>
         <TrendingPeople />
       </Container>
     </React.Fragment>
