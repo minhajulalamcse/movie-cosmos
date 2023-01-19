@@ -2,13 +2,13 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface IMovieSlice {
-  categoryName: string | null
-  genreName: string | null
+  categoryName: string | undefined
+  genreName: string | undefined
 }
 
 const initialState: IMovieSlice = {
-  categoryName: null,
-  genreName: null
+  categoryName: undefined,
+  genreName: undefined
 }
 
 export const movieSlice = createSlice({
@@ -17,15 +17,16 @@ export const movieSlice = createSlice({
   reducers: {
     saveCategoryName: (state, action: PayloadAction<string>) => {
       state.categoryName = action.payload
-      state.genreName = null
+      state.genreName = undefined
     },
     saveGenreName: (state, action: PayloadAction<string>) => {
-      state.categoryName = null
+      state.categoryName = undefined
       let genres: string = ''
-      if (state.genreName !== null) {
+      if (state.genreName !== undefined) {
         genres = state.genreName
-        genres += `,${action.payload}`
+        genres += ','
       }
+      genres += `${action.payload}`
       state.genreName = genres
     }
   }

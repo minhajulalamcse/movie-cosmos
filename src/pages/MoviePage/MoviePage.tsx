@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Container, Grid } from '@mui/material'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
@@ -5,12 +6,12 @@ import { RootState } from '../../app/store'
 import { CardWithGlassEffect, Error, Filters, NoDataFound } from '../../components'
 import { LoadingGridList } from '../../components/Common/LoadingGridList/LoadingGridList'
 import { IMovieDetailsGetResponse } from '../../interfaces/movies/IMovieDetailsGetResponse'
-import { useGetMoviesByCategoryQuery } from '../../services/tmdb'
+import { useGetMoviesQuery } from '../../services/tmdb'
 
 export const MoviePage: FC = () => {
-  const { categoryName } = useSelector((state: RootState) => state?.movie)
+  const { categoryName, genreName: with_genres } = useSelector((state: RootState) => state?.movie)
 
-  const { data, isLoading, isError } = useGetMoviesByCategoryQuery(categoryName)
+  const { data, isLoading, isError } = useGetMoviesQuery({ categoryName, with_genres })
 
   if (isError) {
     return <Error />

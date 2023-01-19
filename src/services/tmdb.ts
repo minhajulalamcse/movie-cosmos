@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IGenreMovieListGetResponse } from '../interfaces/genres/IGenreMovieListGetResponse'
 import { IDiscoverMovieGetResponse } from '../interfaces/movies/IDiscoverMovieGetResponse'
@@ -8,6 +9,7 @@ import { IMovieGetRecommendationsGetResponse } from '../interfaces/movies/IMovie
 import { IMovieImagesGetResponse } from '../interfaces/movies/IMovieImagesGetResonse'
 import { IMovieNowPlayingGetResponse } from '../interfaces/movies/IMovieNowPlayingGetResponse'
 import { IMoviePopularGetResponse } from '../interfaces/movies/IMoviePopularGetResponse'
+import { IMovies } from '../interfaces/movies/IMovies'
 import { IMovieTopRatedGetResponse } from '../interfaces/movies/IMovieTopRatedGetResponse'
 import { IMovieUpcomingGetResponse } from '../interfaces/movies/IMovieUpcomingGetResponse'
 import { IMovieVideosGetResponse } from '../interfaces/movies/IMovieVideosGetResponse'
@@ -102,9 +104,15 @@ export const tmdbApi = createApi({
         return `/discover/movie?api_key=${TMDB_API_KEY}`
       }
     }),
-    getMovies: builder.query<IDiscoverMovieGetResponse, IDiscoverMovieParams>({
-      query: (IDiscoverMovieParams) => {
-        return `/discover/movie?api_key=${TMDB_API_KEY}`
+    getMovies: builder.query<IDiscoverMovieGetResponse, IMovies>({
+      query: ({ categoryName, with_genres }) => {
+        if (categoryName != null) {
+          return `movie/${categoryName}?api_key=${TMDB_API_KEY}`
+        }
+        if (with_genres != null) {
+          return `/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${with_genres}`
+        }
+        return `movie/popular?api_key=${TMDB_API_KEY}`
       }
     })
   })
@@ -124,5 +132,6 @@ export const {
   useGetTopRatedMoviesQuery,
   useGetUpcomingMoviesQuery,
   useGetGenresQuery,
-  useGetDiscoverMoviesQuery
+  useGetDiscoverMoviesQuery,
+  useGetMoviesQuery
 } = tmdbApi

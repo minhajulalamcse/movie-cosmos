@@ -37,8 +37,8 @@ export const Filters: FC = () => {
     dispatch(saveCategoryName(value))
   }
 
-  const handleGenreSelection = (value: string): void => {
-    dispatch(saveGenreName(value))
+  const handleGenreSelection = (value: number): void => {
+    dispatch(saveGenreName(value.toString()))
   }
   return (
     <Box>
@@ -88,7 +88,7 @@ export const Filters: FC = () => {
                   key={index}
                   sx={{ borderRadius: '9999px' }}
                   onClick={() => {
-                    handleGenreSelection(genre?.name)
+                    handleGenreSelection(genre?.id)
                   }}
                 >
                   {genre.name}

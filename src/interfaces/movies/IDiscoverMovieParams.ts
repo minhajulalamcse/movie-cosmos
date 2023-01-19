@@ -1,5 +1,4 @@
 export interface IDiscoverMovieParams {
-  api_key: string
   language?: string
   region?: string
   sort_by?: string
