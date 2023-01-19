@@ -1,10 +1,10 @@
-import { Box, Container } from '@mui/material'
-import { FC } from 'react'
+import { Container } from '@mui/material'
+import React, { FC } from 'react'
 import { TrendingMovies, TrendingPeople, TrendingTVShows } from '../../components'
 
 export const HomePage: FC = () => {
   return (
-    <Box>
+    <React.Fragment>
       <Container>
         <TrendingMovies />
       </Container>
@@ -14,6 +14,6 @@ export const HomePage: FC = () => {
       <Container>
         <TrendingPeople />
       </Container>
-    </Box>
+    </React.Fragment>
   )
 }

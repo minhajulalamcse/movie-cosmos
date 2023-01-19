@@ -5,14 +5,14 @@ import {
   Movie as MovieIcon,
   WatchLater as WatchLaterIcon
 } from '@mui/icons-material'
-import { alpha, Box, Card, CardMedia, IconButton, Rating, styled, Typography, useTheme } from '@mui/material'
+import { alpha, Box, Card, CardMedia, Container, IconButton, Rating, styled, Typography, useTheme } from '@mui/material'
 import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ShowMoreText from 'react-show-more-text'
 import { BlackImage } from '../../assets'
 import { IMovieDetailsGetResponse } from '../../interfaces/movies/IMovieDetailsGetResponse'
 import { getFormattedDate, getYearFromDate, toHoursAndMinutes } from '../../utils'
-import { Container } from '../Common/Container/Container'
+// import { Container } from '../Common/Container/Container'
 import { GlassEffect } from '../Common/GlassEffect/GlassEffect'
 
 interface IMovieInformation {

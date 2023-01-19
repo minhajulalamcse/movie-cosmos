@@ -1,6 +1,6 @@
-import { Box } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import { FC } from 'react'
-import { Container, MovieDetailsFeaturedCard, TopCast } from '../../components'
+import { MovieDetailsFeaturedCard, TopCast } from '../../components'
 
 export const MovieDetailsPage: FC = () => {
   return (

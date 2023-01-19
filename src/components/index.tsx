@@ -1,6 +1,5 @@
 export { AppbarWithDrawer } from './AppbarWithDrawer/AppbarWithDrawer'
 export { CardWithGlassEffect } from './Common/CardWithGlassEffect/CardWithGlassEffect'
-export { Container } from './Common/Container/Container'
 export { FeaturedMovieGlassEffect } from './Common/FeaturedMovieGlassEffect/FeaturedMovieGlassEffect'
 export { FullViewGlassEffect } from './Common/FullViewGlassEffect/FullViewGlassEffect'
 export { GlassEffect } from './Common/GlassEffect/GlassEffect'

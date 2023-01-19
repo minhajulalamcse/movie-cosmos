@@ -21,7 +21,7 @@ export const TrendingTVShows: FC = () => {
     return null
   }
   return (
-    <Box display='flex' flexDirection='column' alignItems='flex-start' justifyContent='flex-start' px={3} my={3}>
+    <Box display='flex' flexDirection='column' alignItems='flex-start' justifyContent='flex-start'>
       <Typography variant='h5' fontWeight={theme.typography.fontWeightMedium} mb={2} ml='10px'>
         Trending TV Shows
       </Typography>

@@ -46,7 +46,7 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
     height: '250px',
     position: 'relative',
     overflow: 'hidden',
-    animation: `${move} 3s normal`,
+    animation: `${move} 2s normal`,
     backgroundColor: '#000000',
     backgroundPosition: 'contain'
   }))
