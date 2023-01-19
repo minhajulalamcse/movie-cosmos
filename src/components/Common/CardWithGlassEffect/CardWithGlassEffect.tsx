@@ -5,7 +5,7 @@ import { GlassEffect, RatingWithTooltip } from '../..'
 import { BlackImage } from '../../../assets'
 
 interface ICardWithGlassEffect {
-  releaseDate?: string
+  subTitle?: string
   imagePath: string | null
   title: string
   voteAverage?: number | undefined
@@ -13,7 +13,7 @@ interface ICardWithGlassEffect {
 }
 
 export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
-  const { releaseDate, imagePath, title, voteAverage, link } = props
+  const { subTitle, imagePath, title, voteAverage, link } = props
   const move = keyframes`
     from { 
       opacity: 0.15;
@@ -46,7 +46,7 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
     position: 'relative',
     overflow: 'hidden',
     animation: `${move} 3s normal`,
-    background: '#000000',
+    backgroundColor: '#000000',
     backgroundSize: 'contain'
   }))
 
@@ -73,7 +73,7 @@ export const CardWithGlassEffect: FC<ICardWithGlassEffect> = (props) => {
             {title}
           </Title>
           <Date variant='subtitle1' gutterBottom>
-            {releaseDate}
+            {subTitle}
           </Date>
           {voteAverage !== undefined && <RatingWithTooltip voteAverage={voteAverage} />}
         </CardContent>

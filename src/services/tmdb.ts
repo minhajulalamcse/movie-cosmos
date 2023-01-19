@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { IMovieCreditsGetResponse } from '../interfaces/movies/IMovieCreditsGetResponse'
 import { IMovieDetailsGetResponse } from '../interfaces/movies/IMovieDetailsGetResponse'
 import { ITrendingMoviesGetResponse } from '../interfaces/trending/ITrendingMoviesGetResponse'
 import { ITrendingParams } from '../interfaces/trending/ITrendingParams'
@@ -32,6 +33,11 @@ export const tmdbApi = createApi({
       query: (movieId) => {
         return `movie/${movieId}?api_key=${TMDB_API_KEY}`
       }
+    }),
+    getCreditsOfMovie: builder.query<IMovieCreditsGetResponse, number>({
+      query: (movieId) => {
+        return `movie/${movieId}/credits?api_key=${TMDB_API_KEY}`
+      }
     })
   })
 })
@@ -39,5 +45,6 @@ export const {
   useGetTrendingMoviesQuery,
   useGetTrendingTVShowsQuery,
   useGetTrendingPeopleQuery,
-  useGetMovieDetailsQuery
+  useGetMovieDetailsQuery,
+  useGetCreditsOfMovieQuery
 } = tmdbApi

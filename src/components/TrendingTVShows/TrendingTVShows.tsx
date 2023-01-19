@@ -30,7 +30,7 @@ export const TrendingTVShows: FC = () => {
           return (
             <CardWithGlassEffect
               key={index}
-              releaseDate={item?.first_air_date}
+              subTitle={item?.first_air_date}
               title={item?.name}
               imagePath={item?.poster_path}
               voteAverage={item?.vote_average}

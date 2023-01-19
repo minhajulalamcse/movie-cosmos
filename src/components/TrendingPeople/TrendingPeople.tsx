@@ -31,7 +31,7 @@ export const TrendingPeople: FC = () => {
           return (
             <CardWithGlassEffect
               key={index}
-              releaseDate={item?.known_for_department}
+              subTitle={item?.known_for_department}
               title={item?.name}
               imagePath={item?.profile_path}
               link={`/${item?.id}`}

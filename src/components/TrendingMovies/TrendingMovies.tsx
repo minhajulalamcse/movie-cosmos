@@ -32,7 +32,7 @@ export const TrendingMovies: FC = () => {
           return (
             <CardWithGlassEffect
               key={index}
-              releaseDate={item?.release_date}
+              subTitle={item?.release_date}
               title={item?.title}
               imagePath={item?.poster_path}
               voteAverage={item?.vote_average}
