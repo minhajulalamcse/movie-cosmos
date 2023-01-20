@@ -1,34 +1,14 @@
 import styled from '@emotion/styled'
 import { Card, CardMedia } from '@mui/material'
 import { FC } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
 import { FeaturedMovieGlassEffect, MovieInformation } from '..'
 import { BlackImage } from '../../assets'
-import { useGetMovieDetailsQuery } from '../../services/tmdb'
-import { Error } from '../Common/Error/Error'
-import { Loading } from '../Common/Loading/Loading'
-import { NoDataFound } from '../Common/NoDataFound/NoDataFound'
+import { IMovieDetailsGetResponse } from '../../interfaces/movies/IMovieDetailsGetResponse'
 
-export const MovieDetailsFeaturedCard: FC = () => {
-  const { id } = useParams()
-  const navigate = useNavigate()
-
-  if ((typeof id === 'string' && Number.isNaN(parseInt(id))) || id === undefined) {
-    navigate('/')
-  }
-
-  const { data, isLoading, isError } = useGetMovieDetailsQuery(Number(id))
-
-  if (isError) {
-    return <Error />
-  }
-  if (isLoading) {
-    return <Loading />
-  }
-  if (data === null || data === undefined) {
-    return <NoDataFound />
-  }
-
+interface IMovieDetailsFeaturedCard {
+  movie: IMovieDetailsGetResponse
+}
+export const MovieDetailsFeaturedCard: FC<IMovieDetailsFeaturedCard> = ({ movie }) => {
   const CardWrapper = styled(Card)(({ theme }) => ({
     boxShadow: '0',
     borderRadius: '0',
@@ -58,12 +38,14 @@ export const MovieDetailsFeaturedCard: FC = () => {
           transition: '0.3s all ease-in-out',
           minHeight: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)', lg: '80vh' }
         }}
-        image={data?.backdrop_path !== null ? `https://image.tmdb.org/t/p/original/${data?.backdrop_path}` : BlackImage}
-        title={data.title}
+        image={
+          movie?.backdrop_path !== null ? `https://image.tmdb.org/t/p/original/${movie?.backdrop_path}` : BlackImage
+        }
+        title={movie.title}
       >
         <BackgroundOverlay />
         <FeaturedMovieGlassEffect />
-        <MovieInformation movie={data} />
+        <MovieInformation movie={movie} />
       </CardMedia>
     </CardWrapper>
   )

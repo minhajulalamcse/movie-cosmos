@@ -34,7 +34,7 @@ export const TrendingPeople: FC = () => {
               subTitle={item?.known_for_department}
               title={item?.name}
               imagePath={item?.profile_path}
-              link={`/${item?.id}`}
+              link={`/person/${item?.id}`}
               glassEffect={true}
             />
           )
