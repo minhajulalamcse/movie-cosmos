@@ -24,6 +24,7 @@ export { PersonDetailsSection } from './PersonDetailsSection/PersonDetailsSectio
 export { PersonDetailsSidebar } from './PersonDetailsSidebar/PersonDetailsSidebar'
 export { PersonInformation } from './PersonInformation/PersonInformation'
 export { PersonMovies } from './PersonMovies/PersonMovies'
+export { PersonTVShows } from './PersonTVShows/PersonTVShows'
 export { TopCast } from './TopCast/TopCast'
 export { TrendingMovies } from './TrendingMovies/TrendingMovies'
 export { TrendingPeople } from './TrendingPeople/TrendingPeople'
