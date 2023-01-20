@@ -37,7 +37,7 @@ export const PersonInformation: FC<IPersonInformation> = ({ person }) => {
         justifyContent: 'flex-start'
       }}
     >
-      <Box display='flex' justifyContent='space-between' alignItems='center'>
+      <Box display='flex' justifyContent='space-between' alignItems='center' mb={5}>
         <IconButton color='inherit' aria-label={'back'} size='medium' onClick={handleBack}>
           <ArrowBackIcon />
         </IconButton>
@@ -61,7 +61,7 @@ export const PersonInformation: FC<IPersonInformation> = ({ person }) => {
           title={person.name}
         />
       </Card>
-      <Box display='flex' flexDirection='column' justifyContent='center' flexBasis='calc(100% - 200px)'>
+      <Box mt={2} display='flex' flexDirection='column' justifyContent='center' flexBasis='calc(100% - 200px)'>
         <Typography variant='h4' fontWeight={theme.typography.fontWeightBold} color='inherit' sx={{ width: '100%' }}>
           {person?.name}
         </Typography>

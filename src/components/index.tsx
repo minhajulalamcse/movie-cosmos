@@ -22,6 +22,7 @@ export { MovieRecommendations } from './MovieRecommendations/MovieRecommendation
 export { PersonDetails } from './PersonDetails/PersonDetails'
 export { PersonDetailsSection } from './PersonDetailsSection/PersonDetailsSection'
 export { PersonDetailsSidebar } from './PersonDetailsSidebar/PersonDetailsSidebar'
+export { PersonImages } from './PersonImages/PersonImages'
 export { PersonInformation } from './PersonInformation/PersonInformation'
 export { PersonMovies } from './PersonMovies/PersonMovies'
 export { PersonTVShows } from './PersonTVShows/PersonTVShows'
