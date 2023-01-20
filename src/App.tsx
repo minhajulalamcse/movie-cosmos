@@ -15,6 +15,7 @@ const App: FC = () => {
           <Route path='/' element={<HomePage />} />
           <Route path='/movies' element={<MoviePage />} />
           <Route path='/movie/:id' element={<MovieDetailsPage />} />
+          <Route path='/person/:id' element={<MovieDetailsPage />} />
         </Routes>
       </Box>
     </React.Fragment>
