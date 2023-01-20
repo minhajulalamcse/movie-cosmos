@@ -13,6 +13,11 @@ import { IMovies } from '../interfaces/movies/IMovies'
 import { IMovieTopRatedGetResponse } from '../interfaces/movies/IMovieTopRatedGetResponse'
 import { IMovieUpcomingGetResponse } from '../interfaces/movies/IMovieUpcomingGetResponse'
 import { IMovieVideosGetResponse } from '../interfaces/movies/IMovieVideosGetResponse'
+import { IPersonDetailsGetResponse } from '../interfaces/people/IPersonDetailsGetResponse'
+import { IPersonExternalIDsGetResponse } from '../interfaces/people/IPersonExternalIDsGetResponse'
+import { IPersonImagesGetResponse } from '../interfaces/people/IPersonImagesGetResponse'
+import { IPersonMovieCreditsGetResponse } from '../interfaces/people/IPersonMovieCreditsGetResponse'
+import { IPersonTVCreditsGetResponse } from '../interfaces/people/IPersonTVCreditsGetResponse'
 import { ITrendingMoviesGetResponse } from '../interfaces/trending/ITrendingMoviesGetResponse'
 import { ITrendingParams } from '../interfaces/trending/ITrendingParams'
 import { ITrendingPeopleGetResponse } from '../interfaces/trending/ITrendingPeopleGetResponse'
@@ -114,6 +119,31 @@ export const tmdbApi = createApi({
         }
         return `movie/popular?api_key=${TMDB_API_KEY}`
       }
+    }),
+    getPersonDetails: builder.query<IPersonDetailsGetResponse, number>({
+      query: (personId) => {
+        return `/person/${personId}?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getPersonMovieCredits: builder.query<IPersonMovieCreditsGetResponse, number>({
+      query: (personId) => {
+        return `/person/${personId}/movie_credits?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getPersonTVCredits: builder.query<IPersonTVCreditsGetResponse, number>({
+      query: (personId) => {
+        return `/person/${personId}/tv_credits?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getPersonExternalIDs: builder.query<IPersonExternalIDsGetResponse, number>({
+      query: (personId) => {
+        return `/person/${personId}/external_ids?api_key=${TMDB_API_KEY}`
+      }
+    }),
+    getPersonImages: builder.query<IPersonImagesGetResponse, number>({
+      query: (personId) => {
+        return `/person/${personId}/images?api_key=${TMDB_API_KEY}`
+      }
     })
   })
 })
@@ -133,5 +163,10 @@ export const {
   useGetUpcomingMoviesQuery,
   useGetGenresQuery,
   useGetDiscoverMoviesQuery,
-  useGetMoviesQuery
+  useGetMoviesQuery,
+  useGetPersonDetailsQuery,
+  useGetPersonExternalIDsQuery,
+  useGetPersonImagesQuery,
+  useGetPersonMovieCreditsQuery,
+  useGetPersonTVCreditsQuery
 } = tmdbApi
