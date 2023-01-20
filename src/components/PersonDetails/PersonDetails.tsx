@@ -1,6 +1,7 @@
 import { Box, Tab, Tabs, Typography } from '@mui/material'
 import React, { FC } from 'react'
 import { IPersonDetailsGetResponse } from '../../interfaces/people/IPersonDetailsGetResponse'
+import { PersonMovies } from '../PersonMovies/PersonMovies'
 
 interface IPersonDetails {
   person: IPersonDetailsGetResponse
@@ -54,7 +55,7 @@ export const PersonDetails: FC<IPersonDetails> = ({ person }) => {
         {person?.biography !== null && <Typography>{person?.biography}</Typography>}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {/* <PersonMovies /> */}
+        <PersonMovies />
       </TabPanel>
       <TabPanel value={value} index={2}>
         {/* <PersonTVSeries /> */}
