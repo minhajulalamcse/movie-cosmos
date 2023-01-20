@@ -53,7 +53,7 @@ export const AppbarWithDrawer: React.FC = () => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant='h6' sx={{ my: 2 }} onClick={handleLogoClick}>
+      <Typography variant='h6' sx={{ my: 2, cursor: 'pointer' }} onClick={handleLogoClick}>
         Movie Cosmos
       </Typography>
       <Divider />
@@ -89,7 +89,7 @@ export const AppbarWithDrawer: React.FC = () => {
             <Typography
               variant='h6'
               component='div'
-              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+              sx={{ cursor: 'pointer', flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
               onClick={handleLogoClick}
             >
               Movie Cosmos
