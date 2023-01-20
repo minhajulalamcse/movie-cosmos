@@ -4,11 +4,13 @@ import { createSlice } from '@reduxjs/toolkit'
 export interface IMovieSlice {
   categoryName: string | undefined
   genreName: string | undefined
+  genres: number[] | undefined
 }
 
 const initialState: IMovieSlice = {
   categoryName: undefined,
-  genreName: undefined
+  genreName: undefined,
+  genres: undefined
 }
 
 export const movieSlice = createSlice({
@@ -19,19 +21,32 @@ export const movieSlice = createSlice({
       state.categoryName = action.payload
       state.genreName = undefined
     },
-    saveGenreName: (state, action: PayloadAction<string>) => {
+    saveGenreId: (state, action: PayloadAction<number>) => {
       state.categoryName = undefined
-      let genres: string = ''
-      if (state.genreName !== undefined) {
-        genres = state.genreName
-        genres += ','
+
+      const genreIds: number[] = [action.payload]
+      if (state.genres !== undefined) {
+        state.genres = [...state.genres, ...genreIds]
+      } else {
+        state.genres = [...genreIds]
       }
-      genres += `${action.payload}`
-      state.genreName = genres
+      console.log('save', state.genres)
+      state.genreName = state.genres?.join(',')
+    },
+    removeGenreId: (state, action: PayloadAction<number>) => {
+      if (state.genres === undefined) {
+        return state
+      }
+      const genresCopy: number[] = [...state?.genres]
+      const index = genresCopy.indexOf(action.payload)
+      genresCopy.splice(index, 1)
+
+      state.genres = genresCopy
+      state.genreName = genresCopy?.join(',')
     }
   }
 })
 
-export const { saveCategoryName, saveGenreName } = movieSlice.actions
+export const { saveCategoryName, saveGenreId, removeGenreId } = movieSlice.actions
 
 export default movieSlice.reducer
