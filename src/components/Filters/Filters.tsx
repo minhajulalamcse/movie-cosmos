@@ -1,8 +1,21 @@
-import { Box, Button, List, ListItem, ListItemButton, ListItemText, Typography, useTheme } from '@mui/material'
+import {
+  Box,
+  Button,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Typography,
+  useTheme
+} from '@mui/material'
 import { FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../app/store'
-import { removeGenreId, saveCategoryName, saveGenreId } from '../../features/movieSlice'
+import {
+  removeGenreId,
+  saveCategoryName,
+  saveGenreId
+} from '../../features/movieSlice'
 import { IGenre } from '../../interfaces/genres/IGenre'
 import { useGetGenresQuery } from '../../services/tmdb'
 
@@ -54,10 +67,17 @@ export const Filters: FC = () => {
         >
           Categories
         </Typography>
-        <Box borderRadius={2} boxShadow={1} sx={{ border: '1px solid #e6e6e6' }}>
+        <Box
+          borderRadius={2}
+          boxShadow={1}
+          sx={{ border: '1px solid #e6e6e6' }}
+        >
           <List>
             {categories?.map((category: ICategory, index: number) => (
-              <ListItem disablePadding key={index}>
+              <ListItem
+                disablePadding
+                key={index}
+              >
                 <ListItemButton
                   onClick={() => {
                     handleCategorySelection(category.value)
@@ -81,8 +101,17 @@ export const Filters: FC = () => {
           >
             Genres
           </Typography>
-          <Box borderRadius={2} boxShadow={1} p={2} sx={{ border: '1px solid #e6e6e6' }}>
-            <Box display='flex' gap='12px' flexWrap='wrap'>
+          <Box
+            borderRadius={2}
+            boxShadow={1}
+            p={2}
+            sx={{ border: '1px solid #e6e6e6' }}
+          >
+            <Box
+              display='flex'
+              gap='12px'
+              flexWrap='wrap'
+            >
               {genreList?.genres.map((genre: IGenre, index: number) => {
                 const isSelected: boolean = genres?.includes(genre?.id) ?? false
                 return (
@@ -90,7 +119,10 @@ export const Filters: FC = () => {
                     size='small'
                     variant={isSelected ? 'contained' : 'outlined'}
                     key={genre?.id}
-                    sx={{ borderRadius: '9999px' }}
+                    sx={{
+                      borderRadius: '9999px',
+                      color: theme.palette.mode === 'dark' ? '#fff' : 'none'
+                    }}
                     onClick={() => {
                       handleGenreSelection(genre?.id, isSelected)
                     }}

@@ -28,15 +28,15 @@ const navItems: INavItem[] = [
   {
     label: 'Movies',
     route: '/movies'
-  },
-  {
-    label: 'TV Shows',
-    route: '/tv'
-  },
-  {
-    label: 'People',
-    route: '/people'
   }
+  // {
+  //   label: 'TV Shows',
+  //   route: '/tv'
+  // },
+  // {
+  //   label: 'People',
+  //   route: '/people'
+  // }
 ]
 
 export const AppbarWithDrawer: React.FC = () => {
@@ -52,14 +52,24 @@ export const AppbarWithDrawer: React.FC = () => {
   }
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant='h6' sx={{ my: 2, cursor: 'pointer' }} onClick={handleLogoClick}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: 'center' }}
+    >
+      <Typography
+        variant='h6'
+        sx={{ my: 2, cursor: 'pointer' }}
+        onClick={handleLogoClick}
+      >
         Movie Cosmos
       </Typography>
       <Divider />
       <List>
         {navItems.map((item: INavItem, index: number) => (
-          <ListItem key={index} disablePadding>
+          <ListItem
+            key={index}
+            disablePadding
+          >
             <ListItemButton sx={{ textAlign: 'center' }}>
               <Link to={`${item?.route}`}>
                 <ListItemText primary={item.label} />
@@ -89,14 +99,21 @@ export const AppbarWithDrawer: React.FC = () => {
             <Typography
               variant='h6'
               component='div'
-              sx={{ cursor: 'pointer', flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+              sx={{
+                cursor: 'pointer',
+                flexGrow: 1,
+                display: { xs: 'none', sm: 'block' }
+              }}
               onClick={handleLogoClick}
             >
               Movie Cosmos
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               {navItems.map((item: INavItem, index: number) => (
-                <Link to={`${item?.route}`} key={index}>
+                <Link
+                  to={`${item?.route}`}
+                  key={index}
+                >
                   <Button sx={{ color: '#fff' }}>{item?.label}</Button>
                 </Link>
               ))}
@@ -114,7 +131,10 @@ export const AppbarWithDrawer: React.FC = () => {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth
+            }
           }}
         >
           {drawer}
