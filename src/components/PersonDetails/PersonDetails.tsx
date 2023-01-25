@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs, Typography } from '@mui/material'
+import { Box, Tab, Tabs, Typography, useTheme } from '@mui/material'
 import React, { FC } from 'react'
 import { PersonImages, PersonMovies, PersonTVShows } from '..'
 import { IPersonDetailsGetResponse } from '../../interfaces/people/IPersonDetailsGetResponse'
@@ -31,6 +31,7 @@ const TabPanel: FC<ITabPanelProps> = (props: ITabPanelProps) => {
 }
 
 export const PersonDetails: FC<IPersonDetails> = ({ person }) => {
+  const theme = useTheme()
   const [value, setValue] = React.useState(0)
 
   const handleChange = (
@@ -55,19 +56,27 @@ export const PersonDetails: FC<IPersonDetails> = ({ person }) => {
       >
         <Tab
           label='Biography'
-          sx={{ color: '#fff !important' }}
+          sx={{
+            color: theme.palette.mode === 'dark' ? '#fff !important' : 'inherit'
+          }}
         />
         <Tab
           label='Movies'
-          sx={{ color: '#fff !important' }}
+          sx={{
+            color: theme.palette.mode === 'dark' ? '#fff !important' : 'inherit'
+          }}
         />
         <Tab
           label='TV Seris'
-          sx={{ color: '#fff !important' }}
+          sx={{
+            color: theme.palette.mode === 'dark' ? '#fff !important' : 'inherit'
+          }}
         />
         <Tab
           label='Photos'
-          sx={{ color: '#fff !important' }}
+          sx={{
+            color: theme.palette.mode === 'dark' ? '#fff !important' : 'inherit'
+          }}
         />
       </Tabs>
       <TabPanel
