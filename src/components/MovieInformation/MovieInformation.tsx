@@ -1,11 +1,20 @@
 import {
   ArrowBack as ArrowBackIcon,
-  FavoriteBorderOutlined as FavoriteBorderOutlinedIcon,
   Language as LanguageIcon,
-  Movie as MovieIcon,
-  WatchLater as WatchLaterIcon
+  Movie as MovieIcon
 } from '@mui/icons-material'
-import { alpha, Box, Card, CardMedia, Container, IconButton, Rating, styled, Typography, useTheme } from '@mui/material'
+import {
+  alpha,
+  Box,
+  Card,
+  CardMedia,
+  Container,
+  IconButton,
+  Rating,
+  styled,
+  Typography,
+  useTheme
+} from '@mui/material'
 import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ShowMoreText from 'react-show-more-text'
@@ -56,17 +65,29 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
     navigate(-1)
   }
 
-  const handleAddToWatchList = (): void => {}
-  const handleFavorite = (): void => {}
+  // const handleAddToWatchList = (): void => {}
+  // const handleFavorite = (): void => {}
   return (
     <React.Fragment>
       <TopSectionInfoWrapper>
         <Container>
-          <Box display='flex' justifyContent='space-between' alignItems='center'>
-            <IconButton color='inherit' aria-label={'back'} size='medium' onClick={handleBack}>
+          <Box
+            display='flex'
+            justifyContent='space-between'
+            alignItems='center'
+          >
+            <IconButton
+              color='inherit'
+              aria-label={'back'}
+              size='medium'
+              onClick={handleBack}
+            >
               <ArrowBackIcon />
             </IconButton>
-            <Box display='flex' gap='10px'>
+            <Box
+              display='flex'
+              gap='10px'
+            >
               <IconButton
                 color='inherit'
                 aria-label={`${movie?.title} website`}
@@ -81,25 +102,33 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
                 color='inherit'
                 aria-label={`imdb ${movie?.title} page`}
                 size='medium'
-                href={movie?.imdb_id !== null ? `https://www.imdb.com/title/${movie?.imdb_id}` : '#'}
+                href={
+                  movie?.imdb_id !== null
+                    ? `https://www.imdb.com/title/${movie?.imdb_id}`
+                    : '#'
+                }
                 target='_blank'
                 rel='noopener noreferrer'
               >
                 <MovieIcon />
               </IconButton>
-              <IconButton color='inherit' aria-label={'watch later'} size='medium' onClick={handleAddToWatchList}>
+              {/* <IconButton color='inherit' aria-label={'watch later'} size='medium' onClick={handleAddToWatchList}>
                 <WatchLaterIcon />
               </IconButton>
               <IconButton color='inherit' aria-label={'favorite'} size='medium' onClick={handleFavorite}>
                 <FavoriteBorderOutlinedIcon />
-              </IconButton>
+              </IconButton> */}
             </Box>
           </Box>
         </Container>
       </TopSectionInfoWrapper>
       <BottomSectionInfoWrapper>
         <Container sx={{ px: { xs: 0, md: 2 } }}>
-          <Box display='flex' justifyContent='flex-start' alignItems='flex-end'>
+          <Box
+            display='flex'
+            justifyContent='flex-start'
+            alignItems='flex-end'
+          >
             <Card
               sx={{
                 width: '400px',
@@ -117,7 +146,9 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
                   backgroundColor: '#000'
                 }}
                 image={
-                  movie?.poster_path !== null ? `https://image.tmdb.org/t/p/w500/${movie?.poster_path}` : BlackImage
+                  movie?.poster_path !== null
+                    ? `https://image.tmdb.org/t/p/w500/${movie?.poster_path}`
+                    : BlackImage
                 }
                 title={movie?.title}
               >
@@ -132,15 +163,30 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
               alignItems='flex-start'
               width='100%'
             >
-              <Typography variant='h4' fontWeight={theme.typography.fontWeightBold} color='inherit'>
+              <Typography
+                variant='h4'
+                fontWeight={theme.typography.fontWeightBold}
+                color='inherit'
+              >
                 {movie?.title}
               </Typography>
-              <Box display='flex' alignItems='center' gap='10px' mt={1}>
-                <Typography color='inherit' fontWeight={theme.typography.fontWeightMedium}>
+              <Box
+                display='flex'
+                alignItems='center'
+                gap='10px'
+                mt={1}
+              >
+                <Typography
+                  color='inherit'
+                  fontWeight={theme.typography.fontWeightMedium}
+                >
                   {getFormattedDate(movie?.release_date)}
                 </Typography>
                 &bull;
-                <Typography color='inherit' fontWeight={theme.typography.fontWeightMedium}>
+                <Typography
+                  color='inherit'
+                  fontWeight={theme.typography.fontWeightMedium}
+                >
                   {toHoursAndMinutes(movie?.runtime)}
                 </Typography>
               </Box>
@@ -153,7 +199,12 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
               >
                 {movie?.tagline}
               </Typography>
-              <Typography variant='h6' fontWeight={theme.typography.fontWeightMedium} gutterBottom color='inherit'>
+              <Typography
+                variant='h6'
+                fontWeight={theme.typography.fontWeightMedium}
+                gutterBottom
+                color='inherit'
+              >
                 Overview
               </Typography>
               <OverviewText>
@@ -178,8 +229,17 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
                 sx={{ flexDirection: { xs: 'column', md: 'row' } }}
               >
                 <Box mt={1}>
-                  <Box display='flex' flexDirection='column' justifyContent='center' alignItems='flex-start'>
-                    <Box display='flex' alignItems='center' gap={'10px'}>
+                  <Box
+                    display='flex'
+                    flexDirection='column'
+                    justifyContent='center'
+                    alignItems='flex-start'
+                  >
+                    <Box
+                      display='flex'
+                      alignItems='center'
+                      gap={'10px'}
+                    >
                       <Rating
                         size='small'
                         readOnly
@@ -191,12 +251,24 @@ export const MovieInformation: FC<IMovieInformation> = ({ movie }) => {
                           }
                         }}
                       />
-                      <Typography color='inherit' variant='body2' fontWeight={theme.typography.fontWeightMedium}>
+                      <Typography
+                        color='inherit'
+                        variant='body2'
+                        fontWeight={theme.typography.fontWeightMedium}
+                      >
                         {(movie?.vote_average).toPrecision(2)} / 10
                       </Typography>
                     </Box>
-                    <Box display='flex' alignItems='center' gap={'10px'}>
-                      <Typography color='inherit' variant='body2' fontWeight={theme.typography.fontWeightMedium}>
+                    <Box
+                      display='flex'
+                      alignItems='center'
+                      gap={'10px'}
+                    >
+                      <Typography
+                        color='inherit'
+                        variant='body2'
+                        fontWeight={theme.typography.fontWeightMedium}
+                      >
                         {movie?.vote_count} reviews
                       </Typography>
                     </Box>

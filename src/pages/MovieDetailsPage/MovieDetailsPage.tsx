@@ -5,7 +5,6 @@ import {
   Error,
   Loading,
   MovieDetailsFeaturedCard,
-  MovieMediaSection,
   MovieRecommendations,
   NoDataFound,
   TopCast
@@ -16,7 +15,10 @@ export const MovieDetailsPage: FC = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  if ((typeof id === 'string' && Number.isNaN(parseInt(id))) || id === undefined) {
+  if (
+    (typeof id === 'string' && Number.isNaN(parseInt(id))) ||
+    id === undefined
+  ) {
     navigate('/')
   }
 
@@ -37,9 +39,9 @@ export const MovieDetailsPage: FC = () => {
       <Container sx={{ m: '24px auto' }}>
         <TopCast />
       </Container>
-      <Container sx={{ m: '24px auto' }}>
+      {/* <Container sx={{ m: '24px auto' }}>
         <MovieMediaSection />
-      </Container>
+      </Container> */}
       <Container sx={{ m: '24px auto' }}>
         <MovieRecommendations />
       </Container>
