@@ -122,14 +122,11 @@ export const AppbarWithDrawer: React.FC = () => {
                 </Link>
               ))}
             </Box>
-            <Button
-              variant='outlined'
+            <IconButton
               sx={{
                 color: '#fff',
                 ml: 'auto',
-                padding: '0 !important',
-                display: 'flex',
-                justifyContent: 'flex-end'
+                padding: '0 !important'
               }}
               onClick={() => toggleMode()}
             >
@@ -138,7 +135,7 @@ export const AppbarWithDrawer: React.FC = () => {
               ) : (
                 <Brightness4Icon sx={{ color: '#fff', mr: 0.5 }} />
               )}
-            </Button>
+            </IconButton>
           </Toolbar>
         </Container>
       </AppBar>
