@@ -15,3 +15,7 @@ React, TypeScript, Material UI, React Router, React Slick, ESLint
 
 ## Website
 https://moviecosmos.netlify.app/
+
+
+https://user-images.githubusercontent.com/23008253/214667996-2bb27ae5-0326-4d6d-924c-bf860a8ca0ed.mp4
+
