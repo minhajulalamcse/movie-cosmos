@@ -1,5 +1,4 @@
-import { createTheme } from '@mui/material'
-export const theme = createTheme({
+export const theme: any = {
   palette: {
     mode: 'dark',
     primary: {
@@ -18,4 +17,4 @@ export const theme = createTheme({
   typography: {
     fontFamily: "'Inter',sans-serif"
   }
-})
+}

@@ -1,3 +1,5 @@
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 import MenuIcon from '@mui/icons-material/Menu'
 import {
   AppBar,
@@ -17,6 +19,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useColorModeContext } from '../../context/ToggleColorMode'
 
 interface INavItem {
   label: string
@@ -41,6 +44,7 @@ const navItems: INavItem[] = [
 
 export const AppbarWithDrawer: React.FC = () => {
   const navigate = useNavigate()
+  const { mode, toggleMode } = useColorModeContext()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = (): void => {
@@ -85,7 +89,7 @@ export const AppbarWithDrawer: React.FC = () => {
     <Box>
       <CssBaseline />
       <AppBar component='nav'>
-        <Container>
+        <Container sx={{ padding: '0 !important' }}>
           <Toolbar>
             <IconButton
               color='inherit'
@@ -118,6 +122,23 @@ export const AppbarWithDrawer: React.FC = () => {
                 </Link>
               ))}
             </Box>
+            <Button
+              variant='outlined'
+              sx={{
+                color: '#fff',
+                ml: 'auto',
+                padding: '0 !important',
+                display: 'flex',
+                justifyContent: 'flex-end'
+              }}
+              onClick={() => toggleMode()}
+            >
+              {mode === 'dark' ? (
+                <Brightness7Icon sx={{ color: '#fff', mr: 0.5 }} />
+              ) : (
+                <Brightness4Icon sx={{ color: '#fff', mr: 0.5 }} />
+              )}
+            </Button>
           </Toolbar>
         </Container>
       </AppBar>
